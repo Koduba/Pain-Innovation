@@ -207,7 +207,7 @@ export interface SurveyResponseV2 {
   last_updated_at?: string;
 }
 
-// Helper function to convert old format to new format
+// Helper function to convert old format to new format (5-point scale, no N/A)
 export function convertToV2Format(
   surveyId: string,
   respondent: any,
@@ -223,7 +223,7 @@ export function convertToV2Format(
     general_comments: generalComments
   };
 
-  // Convert all responses to individual columns
+  // Convert all responses to individual columns (5-point scale)
   let questionNumber = 1;
   
   // Process each section
@@ -233,11 +233,22 @@ export function convertToV2Format(
         const qKey = `q${questionNumber}`;
         const ratingKey = `${qKey}_rating` as keyof SurveyResponseV2;
         const commentKey = `${qKey}_comment` as keyof SurveyResponseV2;
-        const naKey = `${qKey}_na` as keyof SurveyResponseV2;
         
-        (v2Response as any)[ratingKey] = item.rating === 'N/A' ? null : item.rating;
+        // Handle 5-point scale ratings (1-5), no N/A option
+        let rating = item.rating;
+        if (typeof rating === 'string') {
+          // Convert string ratings to numbers if needed
+          rating = parseInt(rating) || 3; // Default to neutral (3)
+        }
+        
+        // Ensure rating is within 1-5 range for database compatibility
+        if (rating < 1 || rating > 5 || rating === null) {
+          rating = 3; // Default to neutral
+        }
+        
+        (v2Response as any)[ratingKey] = rating;
         (v2Response as any)[commentKey] = item.comment || '';
-        (v2Response as any)[naKey] = item.rating === 'N/A';
+        // N/A fields removed from database - no longer setting naKey
         
         questionNumber++;
       });
