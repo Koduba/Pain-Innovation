@@ -79,7 +79,7 @@ export default function SurveyPage() {
         
         // Load existing responses
         const loadedResponses: Responses = {};
-        for (let i = 1; i <= 58; i++) {
+        for (let i = 1; i <= totalQuestions; i++) {
           const rating = (existingResponse as any)[`q${i}_rating`];
           const comment = (existingResponse as any)[`q${i}_comment`] || '';
           
