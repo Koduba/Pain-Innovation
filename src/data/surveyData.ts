@@ -41,7 +41,8 @@ export const SECTIONS: SurveySection[] = [
       "Imaging should be considered for suspected spinal cord compression or cauda equina syndrome.",
       "Symptoms such as bowel/bladder dysfunction or saddle anesthesia are warning signs.",
       "Progressive weakness should prompt further evaluation.",
-      "Infection or cancer risk factors should trigger imaging."
+      "Infection or cancer risk factors should trigger imaging.",
+      "Persistent pain, numbness, or bowel/bladder dysfunction should prompt immediate evaluation."
     ]
   },
   {
