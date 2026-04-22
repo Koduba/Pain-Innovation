@@ -3,9 +3,6 @@
 
 DO $$
 DECLARE
-    column_name TEXT;
-    column_position INTEGER;
-    expected_position INTEGER;
     rating_position INTEGER;
     comment_position INTEGER;
     na_position INTEGER;
@@ -60,14 +57,14 @@ BEGIN
     RAISE NOTICE 'Current column order for questions 1-3:';
     FOR i IN 1..3 LOOP
         RAISE NOTICE 'Question %:', i;
-        FOR column_name IN 
+        FOR col_name IN 
             SELECT column_name 
             FROM information_schema.columns 
             WHERE table_name = 'survey_responses' 
             AND column_name LIKE format('q%s%%', i)
             ORDER BY ordinal_position
         LOOP
-            RAISE NOTICE '  - %', column_name;
+            RAISE NOTICE '  - %', col_name;
         END LOOP;
         RAISE NOTICE '';
     END LOOP;
