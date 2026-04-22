@@ -84,10 +84,12 @@ export default function SurveyPage() {
         for (let i = 1; i <= totalQuestions; i++) {
           const rating = (existingResponse as any)[`q${i}_rating`];
           const comment = (existingResponse as any)[`q${i}_comment`] || '';
+          const na = (existingResponse as any)[`q${i}_na`] || false;
           
           loadedResponses[`q${i}`] = {
             rating: rating || 3,
-            comment
+            comment,
+            na
           };
         }
         

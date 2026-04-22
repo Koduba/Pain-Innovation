@@ -7,9 +7,10 @@ interface SliderProps {
   id: string;
   value: number;
   onChange: (value: number) => void;
+  disabled?: boolean;
 }
 
-export default function Slider({ id, value, onChange }: SliderProps) {
+export default function Slider({ id, value, onChange, disabled = false }: SliderProps) {
   const [sliderValue, setSliderValue] = useState(value);
 
   useEffect(() => {
@@ -46,8 +47,10 @@ export default function Slider({ id, value, onChange }: SliderProps) {
           max="5"
           value={sliderValue}
           step="1"
+          disabled={disabled}
           style={{
-            background: `linear-gradient(to right, ${colorConfig?.track} 0%, ${colorConfig?.track} ${percentage}%, #dde0e4 ${percentage}%, #dde0e4 100%)`
+            background: `linear-gradient(to right, ${colorConfig?.track} 0%, ${colorConfig?.track} ${percentage}%, #dde0e4 ${percentage}%, #dde0e4 100%)`,
+            opacity: disabled ? 0.5 : 1
           }}
           onChange={(e) => handleSlide(parseInt(e.target.value))}
         />

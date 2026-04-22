@@ -7,6 +7,7 @@ export interface SurveySection {
 export interface Response {
   rating: number;
   comment: string;
+  na?: boolean;
 }
 
 export interface Responses {

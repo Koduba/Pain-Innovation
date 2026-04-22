@@ -26,7 +26,15 @@ export default function Question({ id, number, text, response, onResponseChange 
     });
   };
 
-  const showWarning = response.rating !== null && response.rating <= 2;
+  const handleNAChange = (na: boolean) => {
+    onResponseChange({
+      ...response,
+      na,
+      rating: na ? 3 : response.rating // Default to neutral when N/A
+    });
+  };
+
+  const showWarning = response.rating !== null && response.rating <= 2 && !response.na;
 
   return (
     <div className="question">
@@ -39,7 +47,19 @@ export default function Question({ id, number, text, response, onResponseChange 
         id={id}
         value={response.rating || 3}
         onChange={handleSliderChange}
+        disabled={response.na}
       />
+      
+      <div className="q-na-option">
+        <label className="q-na-checkbox">
+          <input
+            type="checkbox"
+            checked={response.na || false}
+            onChange={(e) => handleNAChange(e.target.checked)}
+          />
+          <span>Not Applicable</span>
+        </label>
+      </div>
       
       <div className="q-comment">
         <div className={`q-comment-hint ${showWarning ? 'warn' : ''}`}>

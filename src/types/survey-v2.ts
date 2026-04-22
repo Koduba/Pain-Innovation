@@ -236,11 +236,19 @@ export function convertToV2Format(
         const ratingKey = `${qKey}_rating` as keyof SurveyResponseV2;
         const commentKey = `${qKey}_comment` as keyof SurveyResponseV2;
         
-        // Handle 5-point scale ratings (1-5), no N/A option
+        // Handle 5-point scale ratings (1-5) with N/A option
         let rating = item.rating;
+        let isNA = item.na || false;
+        
         if (typeof rating === 'string') {
-          // Convert string ratings to numbers if needed
-          rating = parseInt(rating) || 3; // Default to neutral (3)
+          // Check if rating is "N/A" or similar
+          if (rating.toUpperCase() === 'N/A' || rating === 'NA') {
+            isNA = true;
+            rating = 3; // Default to neutral when N/A
+          } else {
+            // Convert string ratings to numbers if needed
+            rating = parseInt(rating) || 3; // Default to neutral (3)
+          }
         }
         
         // Ensure rating is within 1-5 range for database compatibility
@@ -250,7 +258,7 @@ export function convertToV2Format(
         
         (v2Response as any)[ratingKey] = rating;
         (v2Response as any)[commentKey] = item.comment || '';
-        // N/A fields removed from database - no longer setting naKey
+        (v2Response as any)[`${qKey}_na`] = isNA;
         
         questionNumber++;
       });

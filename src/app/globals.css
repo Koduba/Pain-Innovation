@@ -177,6 +177,18 @@ input[type="range"]:disabled::-webkit-slider-thumb { transform: none; }
 }
 .q-comment textarea:focus { border-color: var(--blue-400); }
 
+.q-na-option { margin-top: 0.75rem; }
+.q-na-checkbox {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 13px; color: var(--text-muted); cursor: pointer;
+  user-select: none;
+}
+.q-na-checkbox input[type="checkbox"] {
+  width: 16px; height: 16px; cursor: pointer;
+  accent-color: var(--blue-600);
+}
+.q-na-checkbox:hover { color: var(--text); }
+
 /* ── Section footer nav ── */
 .section-nav-footer {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
