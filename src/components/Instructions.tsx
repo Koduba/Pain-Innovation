@@ -27,7 +27,7 @@ export default function Instructions() {
         </div>
         <div className="inst-item">
           <strong>Completion time</strong>
-          58 statements · 7 sections · ~30-45 min
+          58 statements · 7 sections · 15-20 min
         </div>
       </div>
     </div>

@@ -26,7 +26,7 @@ export const SECTIONS: SurveySection[] = [
     desc: "Appropriate use of imaging in acute low back pain.",
     qs: [
       "Imaging should be avoided in most patients with atraumatic ALBP under 6 weeks.",
-      "Imaging should only be used when \"red flag\" symptoms are present.",
+      "Imaging should only be used when \"red flag\" symptoms are present (prolonged pain, progressive numbness, bladder and bowel dysfunction).",
       "Most cases of ALBP resolve without serious pathology.",
       "Imaging does not improve pain or recovery outcomes in uncomplicated cases.",
       "Imaging can lead to unnecessary anxiety or costs.",
