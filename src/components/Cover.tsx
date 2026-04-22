@@ -50,6 +50,15 @@ export default function Cover({ respondent, onRespondentChange, onBegin }: Cover
           />
         </div>
         <div className="cover-field">
+          <label>Country</label>
+          <input
+            type="text"
+            value={respondent.country}
+            onChange={(e) => handleChange('country', e.target.value)}
+            placeholder="Your country"
+          />
+        </div>
+        <div className="cover-field">
           <label>Date completed</label>
           <input
             type="date"

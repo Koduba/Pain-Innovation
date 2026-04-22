@@ -18,6 +18,7 @@ export interface Respondent {
   institution: string;
   role: string;
   date: string;
+  country: string;
 }
 
 export interface SurveyData {

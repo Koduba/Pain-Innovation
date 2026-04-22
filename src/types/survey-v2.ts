@@ -9,6 +9,7 @@ export interface SurveyResponseV2 {
   respondent_institution?: string;
   respondent_role?: string;
   respondent_date?: string;
+  respondent_country?: string;
   general_comments?: string;
   
   // Question responses (58 questions total)
@@ -220,6 +221,7 @@ export function convertToV2Format(
     respondent_institution: respondent.institution,
     respondent_role: respondent.role,
     respondent_date: respondent.date,
+    respondent_country: respondent.country,
     general_comments: generalComments
   };
 

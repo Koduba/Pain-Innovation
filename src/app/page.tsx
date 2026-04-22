@@ -22,7 +22,8 @@ export default function SurveyPage() {
     name: '',
     institution: '',
     role: '',
-    date: ''
+    date: '',
+    country: ''
   });
   const [generalComments, setGeneralComments] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -71,7 +72,8 @@ export default function SurveyPage() {
             name: existingResponse.respondent_name,
             institution: existingResponse.respondent_institution || '',
             role: existingResponse.respondent_role || '',
-            date: existingResponse.respondent_date || ''
+            date: existingResponse.respondent_date || '',
+            country: existingResponse.respondent_country || ''
           });
         }
         
