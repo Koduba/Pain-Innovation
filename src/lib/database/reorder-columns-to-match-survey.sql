@@ -185,6 +185,7 @@ DO $$
 BEGIN
     RAISE NOTICE 'Recreating survey_summary view...';
     
+    -- Create a simpler version of the view without complex unnest operations
     EXECUTE '
     CREATE OR REPLACE VIEW survey_summary AS
     SELECT 
@@ -200,67 +201,40 @@ BEGIN
         sr.created_at,
         sr.updated_at,
         
-        -- Calculate completion statistics
-        (SELECT COUNT(*) FROM information_schema.columns 
-         WHERE table_name = ''survey_responses'' 
-         AND column_name LIKE ''q%_rating'') as total_questions,
+        -- Simple completion count using COALESCE
+        (COALESCE(q1_rating, 0) + COALESCE(q2_rating, 0) + COALESCE(q3_rating, 0) + COALESCE(q4_rating, 0) + COALESCE(q5_rating, 0) +
+         COALESCE(q6_rating, 0) + COALESCE(q7_rating, 0) + COALESCE(q8_rating, 0) + COALESCE(q9_rating, 0) + COALESCE(q10_rating, 0) +
+         COALESCE(q11_rating, 0) + COALESCE(q12_rating, 0) + COALESCE(q13_rating, 0) + COALESCE(q14_rating, 0) + COALESCE(q15_rating, 0) +
+         COALESCE(q16_rating, 0) + COALESCE(q17_rating, 0) + COALESCE(q18_rating, 0) + COALESCE(q19_rating, 0) + COALESCE(q20_rating, 0) +
+         COALESCE(q21_rating, 0) + COALESCE(q22_rating, 0) + COALESCE(q23_rating, 0) + COALESCE(q24_rating, 0) + COALESCE(q25_rating, 0) +
+         COALESCE(q26_rating, 0) + COALESCE(q27_rating, 0) + COALESCE(q28_rating, 0) + COALESCE(q29_rating, 0) + COALESCE(q30_rating, 0) +
+         COALESCE(q31_rating, 0) + COALESCE(q32_rating, 0) + COALESCE(q33_rating, 0) + COALESCE(q34_rating, 0) + COALESCE(q35_rating, 0) +
+         COALESCE(q36_rating, 0) + COALESCE(q37_rating, 0) + COALESCE(q38_rating, 0) + COALESCE(q39_rating, 0) + COALESCE(q40_rating, 0) +
+         COALESCE(q41_rating, 0) + COALESCE(q42_rating, 0) + COALESCE(q43_rating, 0) + COALESCE(q44_rating, 0) + COALESCE(q45_rating, 0) +
+         COALESCE(q46_rating, 0) + COALESCE(q47_rating, 0) + COALESCE(q48_rating, 0) + COALESCE(q49_rating, 0) + COALESCE(q50_rating, 0) +
+         COALESCE(q51_rating, 0) + COALESCE(q52_rating, 0) + COALESCE(q53_rating, 0) + COALESCE(q54_rating, 0) + COALESCE(q55_rating, 0) +
+         COALESCE(q56_rating, 0) + COALESCE(q57_rating, 0) + COALESCE(q58_rating, 0)) as total_rating_sum,
+        
+        -- Count NA responses
+        (CASE WHEN q1_na THEN 1 ELSE 0 END + CASE WHEN q2_na THEN 1 ELSE 0 END + CASE WHEN q3_na THEN 1 ELSE 0 END + CASE WHEN q4_na THEN 1 ELSE 0 END + CASE WHEN q5_na THEN 1 ELSE 0 END +
+         CASE WHEN q6_na THEN 1 ELSE 0 END + CASE WHEN q7_na THEN 1 ELSE 0 END + CASE WHEN q8_na THEN 1 ELSE 0 END + CASE WHEN q9_na THEN 1 ELSE 0 END + CASE WHEN q10_na THEN 1 ELSE 0 END +
+         CASE WHEN q11_na THEN 1 ELSE 0 END + CASE WHEN q12_na THEN 1 ELSE 0 END + CASE WHEN q13_na THEN 1 ELSE 0 END + CASE WHEN q14_na THEN 1 ELSE 0 END + CASE WHEN q15_na THEN 1 ELSE 0 END +
+         CASE WHEN q16_na THEN 1 ELSE 0 END + CASE WHEN q17_na THEN 1 ELSE 0 END + CASE WHEN q18_na THEN 1 ELSE 0 END + CASE WHEN q19_na THEN 1 ELSE 0 END + CASE WHEN q20_na THEN 1 ELSE 0 END +
+         CASE WHEN q21_na THEN 1 ELSE 0 END + CASE WHEN q22_na THEN 1 ELSE 0 END + CASE WHEN q23_na THEN 1 ELSE 0 END + CASE WHEN q24_na THEN 1 ELSE 0 END + CASE WHEN q25_na THEN 1 ELSE 0 END +
+         CASE WHEN q26_na THEN 1 ELSE 0 END + CASE WHEN q27_na THEN 1 ELSE 0 END + CASE WHEN q28_na THEN 1 ELSE 0 END + CASE WHEN q29_na THEN 1 ELSE 0 END + CASE WHEN q30_na THEN 1 ELSE 0 END +
+         CASE WHEN q31_na THEN 1 ELSE 0 END + CASE WHEN q32_na THEN 1 ELSE 0 END + CASE WHEN q33_na THEN 1 ELSE 0 END + CASE WHEN q34_na THEN 1 ELSE 0 END + CASE WHEN q35_na THEN 1 ELSE 0 END +
+         CASE WHEN q36_na THEN 1 ELSE 0 END + CASE WHEN q37_na THEN 1 ELSE 0 END + CASE WHEN q38_na THEN 1 ELSE 0 END + CASE WHEN q39_na THEN 1 ELSE 0 END + CASE WHEN q40_na THEN 1 ELSE 0 END +
+         CASE WHEN q41_na THEN 1 ELSE 0 END + CASE WHEN q42_na THEN 1 ELSE 0 END + CASE WHEN q43_na THEN 1 ELSE 0 END + CASE WHEN q44_na THEN 1 ELSE 0 END + CASE WHEN q45_na THEN 1 ELSE 0 END +
+         CASE WHEN q46_na THEN 1 ELSE 0 END + CASE WHEN q47_na THEN 1 ELSE 0 END + CASE WHEN q48_na THEN 1 ELSE 0 END + CASE WHEN q49_na THEN 1 ELSE 0 END + CASE WHEN q50_na THEN 1 ELSE 0 END +
+         CASE WHEN q51_na THEN 1 ELSE 0 END + CASE WHEN q52_na THEN 1 ELSE 0 END + CASE WHEN q53_na THEN 1 ELSE 0 END + CASE WHEN q54_na THEN 1 ELSE 0 END + CASE WHEN q55_na THEN 1 ELSE 0 END +
+         CASE WHEN q56_na THEN 1 ELSE 0 END + CASE WHEN q57_na THEN 1 ELSE 0 END + CASE WHEN q58_na THEN 1 ELSE 0 END) as na_count,
          
-        (SELECT COUNT(*) 
-         FROM (SELECT unnest(ARRAY[
-            q1_rating, q2_rating, q3_rating, q4_rating, q5_rating, q6_rating, q7_rating, q8_rating, q9_rating, q10_rating,
-            q11_rating, q12_rating, q13_rating, q14_rating, q15_rating, q16_rating, q17_rating, q18_rating, q19_rating, q20_rating,
-            q21_rating, q22_rating, q23_rating, q24_rating, q25_rating, q26_rating, q27_rating, q28_rating, q29_rating, q30_rating,
-            q31_rating, q32_rating, q33_rating, q34_rating, q35_rating, q36_rating, q37_rating, q38_rating, q39_rating, q40_rating,
-            q41_rating, q42_rating, q43_rating, q44_rating, q45_rating, q46_rating, q47_rating, q48_rating, q49_rating, q50_rating,
-            q51_rating, q52_rating, q53_rating, q54_rating, q55_rating, q56_rating, q57_rating, q58_rating
-         ]) WHERE unnest IS NOT NULL) as answered_questions) as answered_count,
-         
-        -- Calculate NA responses count
-        (SELECT COUNT(*) 
-         FROM (SELECT unnest(ARRAY[
-            q1_na, q2_na, q3_na, q4_na, q5_na, q6_na, q7_na, q8_na, q9_na, q10_na,
-            q11_na, q12_na, q13_na, q14_na, q15_na, q16_na, q17_na, q18_na, q19_na, q20_na,
-            q21_na, q22_na, q23_na, q24_na, q25_na, q26_na, q27_na, q28_na, q29_na, q30_na,
-            q31_na, q32_na, q33_na, q34_na, q35_na, q36_na, q37_na, q38_na, q39_na, q40_na,
-            q41_na, q42_na, q43_na, q44_na, q45_na, q46_na, q47_na, q48_na, q49_na, q50_na,
-            q51_na, q52_na, q53_na, q54_na, q55_na, q56_na, q57_na, q58_na
-         ]) WHERE unnest = TRUE) as na_count) as na_count,
-         
-        -- Calculate average rating (excluding NA responses)
-        (SELECT AVG(unnest) 
-         FROM (SELECT unnest(ARRAY[
-            q1_rating, q2_rating, q3_rating, q4_rating, q5_rating, q6_rating, q7_rating, q8_rating, q9_rating, q10_rating,
-            q11_rating, q12_rating, q13_rating, q14_rating, q15_rating, q16_rating, q17_rating, q18_rating, q19_rating, q20_rating,
-            q21_rating, q22_rating, q23_rating, q24_rating, q25_rating, q26_rating, q27_rating, q28_rating, q29_rating, q30_rating,
-            q31_rating, q32_rating, q33_rating, q34_rating, q35_rating, q36_rating, q37_rating, q38_rating, q39_rating, q40_rating,
-            q41_rating, q42_rating, q43_rating, q44_rating, q45_rating, q46_rating, q47_rating, q48_rating, q49_rating, q50_rating,
-            q51_rating, q52_rating, q53_rating, q54_rating, q55_rating, q56_rating, q57_rating, q58_rating
-         ]) WHERE unnest IS NOT NULL) as ratings) as average_rating,
-         
-        -- Calculate completion percentage
-        CASE 
-            WHEN (SELECT COUNT(*) FROM information_schema.columns 
-                  WHERE table_name = ''survey_responses'' 
-                  AND column_name LIKE ''q%_rating'') > 0 
-            THEN ROUND(
-                (SELECT COUNT(*) 
-                 FROM (SELECT unnest(ARRAY[
-                    q1_rating, q2_rating, q3_rating, q4_rating, q5_rating, q6_rating, q7_rating, q8_rating, q9_rating, q10_rating,
-                    q11_rating, q12_rating, q13_rating, q14_rating, q15_rating, q16_rating, q17_rating, q18_rating, q19_rating, q20_rating,
-                    q21_rating, q22_rating, q23_rating, q24_rating, q25_rating, q26_rating, q27_rating, q28_rating, q29_rating, q30_rating,
-                    q31_rating, q32_rating, q33_rating, q34_rating, q35_rating, q36_rating, q37_rating, q38_rating, q39_rating, q40_rating,
-                    q41_rating, q42_rating, q43_rating, q44_rating, q45_rating, q46_rating, q47_rating, q48_rating, q49_rating, q50_rating,
-                    q51_rating, q52_rating, q53_rating, q54_rating, q55_rating, q56_rating, q57_rating, q58_rating
-                 ]) WHERE unnest IS NOT NULL) * 100.0 / 
-                (SELECT COUNT(*) FROM information_schema.columns 
-                 WHERE table_name = ''survey_responses'' 
-                 AND column_name LIKE ''q%_rating''), 2)
-            ELSE 0 
-        END as completion_percentage
+        -- Total questions constant
+        58 as total_questions
         
     FROM survey_responses sr';
     
-    RAISE NOTICE 'survey_summary view recreated with new column order';
+    RAISE NOTICE 'survey_summary view recreated with simplified calculations';
 END $$;
 
 -- Verify the column order matches the survey instrument
