@@ -52,19 +52,21 @@ END $$;
 
 -- Show current column order for first few questions as example
 DO $$
+DECLARE
+    col_record RECORD;
 BEGIN
     RAISE NOTICE '';
     RAISE NOTICE 'Current column order for questions 1-3:';
     FOR i IN 1..3 LOOP
         RAISE NOTICE 'Question %:', i;
-        FOR col_name IN 
+        FOR col_record IN 
             SELECT column_name 
             FROM information_schema.columns 
             WHERE table_name = 'survey_responses' 
             AND column_name LIKE format('q%s%%', i)
             ORDER BY ordinal_position
         LOOP
-            RAISE NOTICE '  - %', col_name;
+            RAISE NOTICE '  - %', col_record.column_name;
         END LOOP;
         RAISE NOTICE '';
     END LOOP;
