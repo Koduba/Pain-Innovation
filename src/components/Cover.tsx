@@ -19,8 +19,8 @@ export default function Cover({ respondent, onRespondentChange, onBegin }: Cover
   return (
     <div className="cover">
       <span className="cover-badge">Round 1</span>
-      <h1>Delphi Consensus Survey</h1>
-      <p className="subtitle">Acute Low Back Pain Clinical Practice Guidelines</p>
+      <h1>Acute Low Back Pain Clinical Practice Guidelines</h1>
+      <p className="subtitle">Delphi Consensus Survey</p>
       <div className="cover-fields">
         <div className="cover-field">
           <label>Expert name</label>
