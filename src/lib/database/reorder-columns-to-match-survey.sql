@@ -107,6 +107,29 @@ BEGIN
     RAISE NOTICE 'Table recreated with exact survey instrument column order';
 END $$;
 
+-- Clean up invalid rating values before adding constraints
+DO $$
+BEGIN
+    RAISE NOTICE 'Cleaning up invalid rating values...';
+    
+    -- Update any NULL ratings to 3 (neutral)
+    FOR i IN 1..58 LOOP
+        EXECUTE format('UPDATE survey_responses SET q%s_rating = 3 WHERE q%s_rating IS NULL', i, i);
+    END LOOP;
+    
+    -- Update any ratings outside 1-5 range to 3 (neutral)
+    FOR i IN 1..58 LOOP
+        EXECUTE format('UPDATE survey_responses SET q%s_rating = 3 WHERE q%s_rating < 1 OR q%s_rating > 5', i, i, i);
+    END LOOP;
+    
+    -- Update any non-integer ratings to 3 (neutral)
+    FOR i IN 1..58 LOOP
+        EXECUTE format('UPDATE survey_responses SET q%s_rating = 3 WHERE q%s_rating IS NOT NULL AND q%s_rating != ROUND(q%s_rating)', i, i, i, i);
+    END LOOP;
+    
+    RAISE NOTICE 'Data cleanup completed';
+END $$;
+
 -- Recreate all constraints
 DO $$
 BEGIN
