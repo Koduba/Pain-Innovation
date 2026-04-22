@@ -57,7 +57,8 @@ export default function SurveyExample() {
         name: 'Dr. Jane Smith',
         institution: 'Tech Research Institute',
         role: 'Senior Researcher',
-        date: new Date().toISOString()
+        date: new Date().toISOString(),
+        country: 'United States'
       }
 
       const responseData: SurveyData = {
