@@ -67,6 +67,7 @@ export async function POST() {
         respondent_institution: 'Test',
         respondent_role: 'Test',
         respondent_date: '2026-04-21',
+        respondent_country: 'United States',
         general_comments: 'Testing 5-point scale validation',
         q1_rating: 3, // Valid (1-5)
         q2_rating: 5, // Valid (1-5)

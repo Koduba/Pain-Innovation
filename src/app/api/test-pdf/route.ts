@@ -9,7 +9,8 @@ export async function POST() {
         name: 'Test User PDF',
         institution: 'Test Institution PDF',
         role: 'Test Role PDF',
-        date: new Date().toISOString().split('T')[0]
+        date: new Date().toISOString().split('T')[0],
+        country: 'United States'
       },
       general_comments: 'This is a test comment for PDF generation to verify the functionality works correctly.',
       responses: {

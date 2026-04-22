@@ -26,7 +26,8 @@ export async function POST() {
       name: 'Edited User Name',
       institution: 'Edited Institution',
       role: 'Edited Role',
-      date: new Date().toISOString().split('T')[0]
+      date: new Date().toISOString().split('T')[0],
+      country: 'United States'
     }
 
     const updatedSurveyData = {

@@ -9,7 +9,8 @@ export async function POST() {
       name: 'Test User',
       institution: 'Test Institution',
       role: 'Test Role',
-      date: new Date().toISOString().split('T')[0]
+      date: new Date().toISOString().split('T')[0],
+      country: 'United States'
     }
 
     const testSurveyData: SurveyData = {

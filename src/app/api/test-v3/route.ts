@@ -25,7 +25,8 @@ export async function POST() {
         name: 'Test User V3',
         institution: 'Test Institution V3',
         role: 'Test Role V3',
-        date: new Date().toISOString().split('T')[0]
+        date: new Date().toISOString().split('T')[0],
+        country: 'United States'
       }
 
       const testSurveyData = {
@@ -73,7 +74,8 @@ export async function POST() {
         name: 'Test User V3 - Updated',
         institution: 'Test Institution V3 - Updated',
         role: 'Test Role V3 - Updated',
-        date: new Date().toISOString().split('T')[0]
+        date: new Date().toISOString().split('T')[0],
+        country: 'United States'
       }
 
       const updatedSurveyData = {
