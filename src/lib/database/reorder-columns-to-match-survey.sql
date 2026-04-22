@@ -99,7 +99,8 @@ BEGIN
         
     FROM survey_responses';
     
-    -- Drop old table and rename
+    -- Drop dependent objects first, then drop and rename table
+    DROP VIEW IF EXISTS survey_summary;
     DROP TABLE survey_responses;
     ALTER TABLE survey_responses_new RENAME TO survey_responses;
     
@@ -136,6 +137,89 @@ BEGIN
     CREATE INDEX IF NOT EXISTS idx_survey_responses_is_completed ON survey_responses(is_completed);
     
     RAISE NOTICE 'Indexes recreated';
+END $$;
+
+-- Recreate the survey_summary view with new column order
+DO $$
+BEGIN
+    RAISE NOTICE 'Recreating survey_summary view...';
+    
+    EXECUTE '
+    CREATE OR REPLACE VIEW survey_summary AS
+    SELECT 
+        sr.id,
+        sr.survey_id,
+        sr.respondent_name,
+        sr.respondent_institution,
+        sr.respondent_role,
+        sr.respondent_date,
+        sr.respondent_country,
+        sr.general_comments,
+        sr.is_completed,
+        sr.created_at,
+        sr.updated_at,
+        
+        -- Calculate completion statistics
+        (SELECT COUNT(*) FROM information_schema.columns 
+         WHERE table_name = ''survey_responses'' 
+         AND column_name LIKE ''q%_rating'') as total_questions,
+         
+        (SELECT COUNT(*) 
+         FROM (SELECT unnest(ARRAY[
+            q1_rating, q2_rating, q3_rating, q4_rating, q5_rating, q6_rating, q7_rating, q8_rating, q9_rating, q10_rating,
+            q11_rating, q12_rating, q13_rating, q14_rating, q15_rating, q16_rating, q17_rating, q18_rating, q19_rating, q20_rating,
+            q21_rating, q22_rating, q23_rating, q24_rating, q25_rating, q26_rating, q27_rating, q28_rating, q29_rating, q30_rating,
+            q31_rating, q32_rating, q33_rating, q34_rating, q35_rating, q36_rating, q37_rating, q38_rating, q39_rating, q40_rating,
+            q41_rating, q42_rating, q43_rating, q44_rating, q45_rating, q46_rating, q47_rating, q48_rating, q49_rating, q50_rating,
+            q51_rating, q52_rating, q53_rating, q54_rating, q55_rating, q56_rating, q57_rating, q58_rating
+         ]) WHERE unnest IS NOT NULL) as answered_questions) as answered_count,
+         
+        -- Calculate NA responses count
+        (SELECT COUNT(*) 
+         FROM (SELECT unnest(ARRAY[
+            q1_na, q2_na, q3_na, q4_na, q5_na, q6_na, q7_na, q8_na, q9_na, q10_na,
+            q11_na, q12_na, q13_na, q14_na, q15_na, q16_na, q17_na, q18_na, q19_na, q20_na,
+            q21_na, q22_na, q23_na, q24_na, q25_na, q26_na, q27_na, q28_na, q29_na, q30_na,
+            q31_na, q32_na, q33_na, q34_na, q35_na, q36_na, q37_na, q38_na, q39_na, q40_na,
+            q41_na, q42_na, q43_na, q44_na, q45_na, q46_na, q47_na, q48_na, q49_na, q50_na,
+            q51_na, q52_na, q53_na, q54_na, q55_na, q56_na, q57_na, q58_na
+         ]) WHERE unnest = TRUE) as na_count) as na_count,
+         
+        -- Calculate average rating (excluding NA responses)
+        (SELECT AVG(unnest) 
+         FROM (SELECT unnest(ARRAY[
+            q1_rating, q2_rating, q3_rating, q4_rating, q5_rating, q6_rating, q7_rating, q8_rating, q9_rating, q10_rating,
+            q11_rating, q12_rating, q13_rating, q14_rating, q15_rating, q16_rating, q17_rating, q18_rating, q19_rating, q20_rating,
+            q21_rating, q22_rating, q23_rating, q24_rating, q25_rating, q26_rating, q27_rating, q28_rating, q29_rating, q30_rating,
+            q31_rating, q32_rating, q33_rating, q34_rating, q35_rating, q36_rating, q37_rating, q38_rating, q39_rating, q40_rating,
+            q41_rating, q42_rating, q43_rating, q44_rating, q45_rating, q46_rating, q47_rating, q48_rating, q49_rating, q50_rating,
+            q51_rating, q52_rating, q53_rating, q54_rating, q55_rating, q56_rating, q57_rating, q58_rating
+         ]) WHERE unnest IS NOT NULL) as ratings) as average_rating,
+         
+        -- Calculate completion percentage
+        CASE 
+            WHEN (SELECT COUNT(*) FROM information_schema.columns 
+                  WHERE table_name = ''survey_responses'' 
+                  AND column_name LIKE ''q%_rating'') > 0 
+            THEN ROUND(
+                (SELECT COUNT(*) 
+                 FROM (SELECT unnest(ARRAY[
+                    q1_rating, q2_rating, q3_rating, q4_rating, q5_rating, q6_rating, q7_rating, q8_rating, q9_rating, q10_rating,
+                    q11_rating, q12_rating, q13_rating, q14_rating, q15_rating, q16_rating, q17_rating, q18_rating, q19_rating, q20_rating,
+                    q21_rating, q22_rating, q23_rating, q24_rating, q25_rating, q26_rating, q27_rating, q28_rating, q29_rating, q30_rating,
+                    q31_rating, q32_rating, q33_rating, q34_rating, q35_rating, q36_rating, q37_rating, q38_rating, q39_rating, q40_rating,
+                    q41_rating, q42_rating, q43_rating, q44_rating, q45_rating, q46_rating, q47_rating, q48_rating, q49_rating, q50_rating,
+                    q51_rating, q52_rating, q53_rating, q54_rating, q55_rating, q56_rating, q57_rating, q58_rating
+                 ]) WHERE unnest IS NOT NULL) * 100.0 / 
+                (SELECT COUNT(*) FROM information_schema.columns 
+                 WHERE table_name = ''survey_responses'' 
+                 AND column_name LIKE ''q%_rating''), 2)
+            ELSE 0 
+        END as completion_percentage
+        
+    FROM survey_responses sr';
+    
+    RAISE NOTICE 'survey_summary view recreated with new column order';
 END $$;
 
 -- Verify the column order matches the survey instrument
