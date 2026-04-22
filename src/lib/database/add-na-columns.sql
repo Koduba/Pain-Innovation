@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS survey_responses_backup_na_addition AS SELECT * FROM 
 DO $$
 DECLARE
     column_exists BOOLEAN;
+    reorder_needed BOOLEAN;
 BEGIN
     -- Check if any NA columns already exist
     SELECT EXISTS (
@@ -20,9 +21,38 @@ BEGIN
         AND column_name LIKE '%_na'
     ) INTO column_exists;
     
+    -- Check if reordering is needed (NA columns not after comment columns)
+    reorder_needed := FALSE;
     IF column_exists THEN
-        RAISE NOTICE 'NA columns already exist, skipping recreation';
-    ELSE
+        FOR i IN 1..58 LOOP
+            DECLARE
+                comment_pos INTEGER;
+                na_pos INTEGER;
+            BEGIN
+                SELECT ordinal_position INTO comment_pos
+                FROM information_schema.columns 
+                WHERE table_name = 'survey_responses' 
+                AND column_name = format('q%s_comment', i);
+                
+                SELECT ordinal_position INTO na_pos
+                FROM information_schema.columns 
+                WHERE table_name = 'survey_responses' 
+                AND column_name = format('q%s_na', i);
+                
+                IF na_pos IS NOT NULL AND comment_pos IS NOT NULL AND na_pos < comment_pos THEN
+                    reorder_needed := TRUE;
+                    EXIT;
+                END IF;
+            END;
+        END LOOP;
+    END IF;
+    
+    IF NOT column_exists OR reorder_needed THEN
+        IF reorder_needed THEN
+            RAISE NOTICE 'NA columns exist but are in wrong order - recreating table';
+        ELSE
+            RAISE NOTICE 'NA columns do not exist - creating table with proper ordering';
+        END IF;
         -- Create a new table with proper column ordering
         EXECUTE '
         CREATE TABLE survey_responses_new AS 
@@ -104,6 +134,8 @@ BEGIN
         CREATE INDEX IF NOT EXISTS idx_survey_responses_user_session ON survey_responses(user_session_id);
         
         RAISE NOTICE 'Table recreated with proper NA column ordering';
+    ELSE
+        RAISE NOTICE 'NA columns already exist and are in correct order - no changes needed';
     END IF;
 END $$;
 
