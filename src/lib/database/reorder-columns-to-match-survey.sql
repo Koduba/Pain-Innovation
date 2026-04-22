@@ -114,13 +114,31 @@ BEGIN
     
     -- Add rating range constraints for all questions
     FOR i IN 1..58 LOOP
-        EXECUTE format('ALTER TABLE survey_responses ADD CONSTRAINT IF NOT EXISTS check_q%s_rating_range CHECK (q%s_rating BETWEEN 1 AND 5)', i, i);
+        BEGIN
+            EXECUTE format('ALTER TABLE survey_responses ADD CONSTRAINT check_q%s_rating_range CHECK (q%s_rating BETWEEN 1 AND 5)', i, i);
+        EXCEPTION
+            WHEN duplicate_object THEN NULL;
+        END;
     END LOOP;
     
     -- Add NOT NULL constraints for essential columns
-    ALTER TABLE survey_responses ADD CONSTRAINT IF NOT EXISTS survey_id_not_null CHECK (survey_id IS NOT NULL);
-    ALTER TABLE survey_responses ADD CONSTRAINT IF NOT EXISTS respondent_name_not_null CHECK (respondent_name IS NOT NULL);
-    ALTER TABLE survey_responses ADD CONSTRAINT IF NOT EXISTS respondent_date_not_null CHECK (respondent_date IS NOT NULL);
+    BEGIN
+        ALTER TABLE survey_responses ADD CONSTRAINT survey_id_not_null CHECK (survey_id IS NOT NULL);
+    EXCEPTION
+        WHEN duplicate_object THEN NULL;
+    END;
+    
+    BEGIN
+        ALTER TABLE survey_responses ADD CONSTRAINT respondent_name_not_null CHECK (respondent_name IS NOT NULL);
+    EXCEPTION
+        WHEN duplicate_object THEN NULL;
+    END;
+    
+    BEGIN
+        ALTER TABLE survey_responses ADD CONSTRAINT respondent_date_not_null CHECK (respondent_date IS NOT NULL);
+    EXCEPTION
+        WHEN duplicate_object THEN NULL;
+    END;
     
     RAISE NOTICE 'Constraints recreated';
 END $$;
