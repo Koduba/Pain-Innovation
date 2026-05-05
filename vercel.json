@@ -1,14 +1,10 @@
 {
   "version": 2,
   "name": "delphi-survey",
-  "buildCommand": "next build",
-  "outputDirectory": "dist",
-  "framework": "nextjs",
-  "installCommand": "npm install",
-  "env": {
-    "NEXT_PUBLIC_SUPABASE_URL": "@next_public_supabase_url",
-    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@next_public_supabase_anon_key"
-  },
+  "buildCommand": "echo 'Static site - no build needed'",
+  "outputDirectory": "public",
+  "framework": null,
+  "installCommand": "echo 'No dependencies needed for static site'",
   "rewrites": [
     {
       "source": "/",
@@ -17,6 +13,10 @@
     {
       "source": "/investors",
       "destination": "/investors.html"
+    },
+    {
+      "source": "/features",
+      "destination": "/features.html"
     },
     {
       "source": "/survey",
