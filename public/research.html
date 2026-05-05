@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Papers · PIN Clinical Intelligence Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --s1: #f1f5f9;
+            --s2: #e2e8f0;
+            --border: rgba(0,0,0,0.08);
+            --border2: rgba(0,0,0,0.05);
+            --txt: #0f172a;
+            --txt2: #475569;
+            --muted: #64748b;
+            --muted2: #94a3b8;
+            --teal: #0ea5e9;
+            --teal2: rgba(14,165,233,0.10);
+            --teal3: rgba(14,165,233,0.06);
+            --amber: #f0a500;
+            --amber2: rgba(240,165,0,0.12);
+            --red: #f04054;
+            --red2: rgba(240,64,84,0.12);
+            --green: #22c98a;
+            --green2: rgba(34,201,138,0.10);
+            --blue: #6c72f0;
+            --blue2: rgba(108,114,240,0.10);
+            --violet: #a855f7;
+            --violet2: rgba(168,85,247,0.10);
+            --pharma: #14b8c8;
+            --pharma2: rgba(20,184,200,0.10);
+            --pharma3: rgba(20,184,200,0.06);
+            --shadow: 0 1px 6px rgba(0,0,0,0.40), 0 1px 3px rgba(0,0,0,0.25);
+            --shadow2: 0 6px 24px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.30);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--txt);
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.95);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--txt2);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+
+        .btn-primary {
+            background: var(--teal);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--violet2) 0%, var(--pharma3) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--txt2);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Research Categories */
+        .research-categories {
+            padding: 4rem 0;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .category-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow2);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--violet2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--violet);
+        }
+
+        .category-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .category-card p {
+            color: var(--txt2);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .paper-count {
+            background: var(--violet2);
+            color: var(--violet);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Featured Papers */
+        .featured-papers {
+            padding: 4rem 0;
+            background: var(--s1);
+        }
+
+        .papers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .paper-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .paper-card:hover {
+            border-color: var(--teal);
+            transform: translateY(-3px);
+        }
+
+        .paper-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--txt);
+            line-height: 1.4;
+        }
+
+        .paper-authors {
+            color: var(--txt2);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .paper-journal {
+            color: var(--teal);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .paper-abstract {
+            color: var(--txt2);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .paper-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .paper-year {
+            background: var(--teal2);
+            color: var(--teal);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .paper-citations {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .view-btn {
+            background: var(--teal);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .view-btn:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+        }
+
+        /* Research Impact */
+        .research-impact {
+            padding: 4rem 0;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--txt2);
+            font-size: 0.9rem;
+        }
+
+        /* Collaboration */
+        .collaboration {
+            padding: 4rem 0;
+            background: var(--s1);
+        }
+
+        .collab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .collab-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .collab-logo {
+            width: 80px;
+            height: 80px;
+            background: var(--pharma2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: var(--pharma);
+        }
+
+        .collab-card h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .collab-card p {
+            color: var(--txt2);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .partner-btn {
+            background: var(--pharma);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .partner-btn:hover {
+            background: #1199a6;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--txt);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--muted2);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--teal);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border2);
+            padding-top: 1rem;
+            text-align: center;
+            color: var(--muted2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .papers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="landing.html" class="logo">PIN</a>
+            <ul class="nav-links">
+                <li><a href="landing.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="investors.html">Investors</a></li>
+                <li><a href="research.html">Research</a></li>
+            </ul>
+            <a href="#contact" class="btn-primary">Get Started</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Research Papers</h1>
+                <p>Explore our collection of peer-reviewed research publications and clinical studies powered by PIN data</p>
+            </div>
+        </section>
+
+        <section class="research-categories">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Research Areas</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Discover research across multiple domains of pain management and clinical intelligence</p>
+                
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <div class="category-icon">🧬</div>
+                        <h3>Clinical Outcomes</h3>
+                        <p>Research on patient outcomes, treatment efficacy, and quality improvement initiatives using real-world data.</p>
+                        <span class="paper-count">47 Papers</span>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-icon">💊</div>
+                        <h3>Pharmacovigilance</h3>
+                        <p>Studies on drug safety, adverse event monitoring, and risk management strategies in pain management.</p>
+                        <span class="paper-count">32 Papers</span>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-icon">🤖</div>
+                        <h3>AI & Machine Learning</h3>
+                        <p>Research on artificial intelligence applications, predictive analytics, and decision support systems.</p>
+                        <span class="paper-count">28 Papers</span>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-icon">📊</div>
+                        <h3>Population Health</h3>
+                        <p>Studies on population health trends, epidemiological patterns, and public health interventions.</p>
+                        <span class="paper-count">35 Papers</span>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-icon">🏥</div>
+                        <h3>Health Economics</h3>
+                        <p>Research on cost-effectiveness, healthcare utilization, and economic impact of pain management interventions.</p>
+                        <span class="paper-count">21 Papers</span>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-icon">🔬</div>
+                        <h3>Biomarker Research</h3>
+                        <p>Studies on biomarkers, genetic factors, and personalized medicine approaches in pain management.</p>
+                        <span class="paper-count">19 Papers</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-papers">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Featured Publications</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Recent high-impact research papers published using PIN platform data</p>
+                
+                <div class="papers-grid">
+                    <div class="paper-card">
+                        <h3 class="paper-title">Real-World Evidence of Opioid-Sparing Protocols in Chronic Pain Management: A Multi-Center Analysis</h3>
+                        <p class="paper-authors">Johnson MD, Smith KA, Chen L, et al.</p>
+                        <p class="paper-journal">Journal of Pain Medicine, 2024</p>
+                        <p class="paper-abstract">This comprehensive multi-center study analyzed data from 15,000+ patients across 25 clinical sites to evaluate the effectiveness of opioid-sparing protocols in chronic pain management. Results show significant reduction in opioid prescriptions while maintaining pain control outcomes...</p>
+                        <div class="paper-meta">
+                            <span class="paper-year">2024</span>
+                            <span class="paper-citations">📊 127 citations</span>
+                        </div>
+                        <a href="#" class="view-btn">View Full Paper</a>
+                    </div>
+                    
+                    <div class="paper-card">
+                        <h3 class="paper-title">Machine Learning Algorithms for Predicting Adverse Drug Events in Pain Management: A Validation Study</h3>
+                        <p class="paper-authors">Rodriguez A, Thompson B, Lee S, et al.</p>
+                        <p class="paper-journal">Clinical Pharmacology & Therapeutics, 2024</p>
+                        <p class="paper-abstract">This study validates the performance of machine learning algorithms in predicting adverse drug events using PIN's comprehensive pharmacovigilance dataset. The models achieved 92% accuracy in identifying high-risk patients...</p>
+                        <div class="paper-meta">
+                            <span class="paper-year">2024</span>
+                            <span class="paper-citations">📊 89 citations</span>
+                        </div>
+                        <a href="#" class="view-btn">View Full Paper</a>
+                    </div>
+                    
+                    <div class="paper-card">
+                        <h3 class="paper-title">Economic Impact of Integrated Pain Management Programs: A Cost-Benefit Analysis</h3>
+                        <p class="paper-authors">Williams R, Davis M, Anderson K, et al.</p>
+                        <p class="paper-journal">Health Economics Review, 2023</p>
+                        <p class="paper-abstract">Analysis of the economic benefits of integrated pain management programs using PIN data from healthcare systems across 12 countries. Findings demonstrate significant cost savings and improved patient outcomes...</p>
+                        <div class="paper-meta">
+                            <span class="paper-year">2023</span>
+                            <span class="paper-citations">📊 156 citations</span>
+                        </div>
+                        <a href="#" class="view-btn">View Full Paper</a>
+                    </div>
+                    
+                    <div class="paper-card">
+                        <h3 class="paper-title">Biomarker-Guided Personalized Pain Therapy: A Prospective Cohort Study</h3>
+                        <p class="paper-authors">Martinez C, Garcia J, Wilson E, et al.</p>
+                        <p class="paper-journal">Pain Medicine, 2023</p>
+                        <p class="paper-abstract">Prospective study examining the effectiveness of biomarker-guided personalized pain therapy. Results show improved treatment outcomes and reduced adverse events when therapy is tailored to individual biomarkers...</p>
+                        <div class="paper-meta">
+                            <span class="paper-year">2023</span>
+                            <span class="paper-citations">📊 73 citations</span>
+                        </div>
+                        <a href="#" class="view-btn">View Full Paper</a>
+                    </div>
+                    
+                    <div class="paper-card">
+                        <h3 class="paper-title">Global Trends in Pain Management: A 10-Year Analysis Using Real-World Data</h3>
+                        <p class="paper-authors">Taylor P, Brown L, Miller S, et al.</p>
+                        <p class="paper-journal">Global Health Journal, 2023</p>
+                        <p class="paper-abstract">Comprehensive 10-year analysis of global trends in pain management using PIN's international dataset. Study reveals significant shifts in treatment patterns and outcomes across different regions...</p>
+                        <div class="paper-meta">
+                            <span class="paper-year">2023</span>
+                            <span class="paper-citations">📊 201 citations</span>
+                        </div>
+                        <a href="#" class="view-btn">View Full Paper</a>
+                    </div>
+                    
+                    <div class="paper-card">
+                        <h3 class="paper-title">Digital Health Interventions for Chronic Pain: A Systematic Review and Meta-Analysis</h3>
+                        <p class="paper-authors">Anderson M, Clark K, Roberts D, et al.</p>
+                        <p class="paper-journal">Journal of Medical Internet Research, 2022</p>
+                        <p class="paper-abstract">Systematic review and meta-analysis of digital health interventions for chronic pain management. Analysis includes data from PIN platform and other major digital health databases...</p>
+                        <div class="paper-meta">
+                            <span class="paper-year">2022</span>
+                            <span class="paper-citations">📊 145 citations</span>
+                        </div>
+                        <a href="#" class="view-btn">View Full Paper</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="research-impact">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Research Impact</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Measuring the influence of PIN-powered research on clinical practice and patient care</p>
+                
+                <div class="impact-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">182</div>
+                        <div class="stat-label">Peer-Reviewed Publications</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">3,847</div>
+                        <div class="stat-label">Total Citations</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label">Countries Represented</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">150K+</div>
+                        <div class="stat-label">Patients in Studies</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="collaboration">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Research Partners</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Collaborating with leading institutions to advance pain management research</p>
+                
+                <div class="collab-grid">
+                    <div class="collab-card">
+                        <div class="collab-logo">🏥</div>
+                        <h4>Academic Medical Centers</h4>
+                        <p>Partnerships with leading academic institutions for clinical research and trials.</p>
+                        <a href="#" class="partner-btn">Learn More</a>
+                    </div>
+                    
+                    <div class="collab-card">
+                        <div class="collab-logo">🏢</div>
+                        <h4>Pharmaceutical Companies</h4>
+                        <p>Collaborative research with industry partners on drug development and safety.</p>
+                        <a href="#" class="partner-btn">Learn More</a>
+                    </div>
+                    
+                    <div class="collab-card">
+                        <div class="collab-logo">🌍</div>
+                        <h4>International Organizations</h4>
+                        <p>Global partnerships with pain societies and healthcare organizations.</p>
+                        <a href="#" class="partner-btn">Learn More</a>
+                    </div>
+                    
+                    <div class="collab-card">
+                        <div class="collab-logo">🔬</div>
+                        <h4>Research Institutes</h4>
+                        <p>Collaboration with specialized research institutes focused on pain and neuroscience.</p>
+                        <a href="#" class="partner-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PIN Platform</h4>
+                    <p>Transforming clinical data into actionable intelligence for better patient outcomes.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="security.html">Security</a></li>
+                        <li><a href="integrations.html">Integrations</a></li>
+                        <li><a href="api-docs.html">API Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="user-guides.html">User Guides</a></li>
+                        <li><a href="training.html">Training Materials</a></li>
+                        <li><a href="research.html">Research Papers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="contact-support.html">Contact Support</a></li>
+                        <li><a href="sla.html">Service Level Agreement</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PIN - Pain Innovation Network. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

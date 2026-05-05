@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center · PIN Clinical Intelligence Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --s1: #f1f5f9;
+            --s2: #e2e8f0;
+            --border: rgba(0,0,0,0.08);
+            --border2: rgba(0,0,0,0.05);
+            --txt: #0f172a;
+            --txt2: #475569;
+            --muted: #64748b;
+            --muted2: #94a3b8;
+            --teal: #0ea5e9;
+            --teal2: rgba(14,165,233,0.10);
+            --teal3: rgba(14,165,233,0.06);
+            --amber: #f0a500;
+            --amber2: rgba(240,165,0,0.12);
+            --red: #f04054;
+            --red2: rgba(240,64,84,0.12);
+            --green: #22c98a;
+            --green2: rgba(34,201,138,0.10);
+            --blue: #6c72f0;
+            --blue2: rgba(108,114,240,0.10);
+            --violet: #a855f7;
+            --violet2: rgba(168,85,247,0.10);
+            --pharma: #14b8c8;
+            --pharma2: rgba(20,184,200,0.10);
+            --pharma3: rgba(20,184,200,0.06);
+            --shadow: 0 1px 6px rgba(0,0,0,0.40), 0 1px 3px rgba(0,0,0,0.25);
+            --shadow2: 0 6px 24px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.30);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--txt);
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.95);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--txt2);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+
+        .btn-primary {
+            background: var(--teal);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--blue2) 0%, var(--teal3) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--txt2);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Search Section */
+        .search-section {
+            padding: 3rem 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--teal);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--teal);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: #0284c7;
+        }
+
+        .popular-topics {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .topic-tag {
+            background: var(--teal2);
+            color: var(--teal);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .topic-tag:hover {
+            background: var(--teal);
+            color: var(--white);
+        }
+
+        /* Help Categories */
+        .help-categories {
+            padding: 4rem 0;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .category-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow2);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--blue2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--blue);
+        }
+
+        .category-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .category-card p {
+            color: var(--txt2);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-links {
+            list-style: none;
+        }
+
+        .article-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .article-links a {
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .article-links a:hover {
+            color: #0284c7;
+            transform: translateX(3px);
+        }
+
+        .article-links a::before {
+            content: '📄';
+            font-size: 0.8rem;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            padding: 4rem 0;
+            background: var(--s1);
+        }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .action-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .action-card:hover {
+            border-color: var(--teal);
+            transform: translateY(-3px);
+        }
+
+        .action-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--green2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: var(--green);
+        }
+
+        .action-card h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .action-card p {
+            color: var(--txt2);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .action-btn {
+            background: var(--green);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .action-btn:hover {
+            background: #1ea974;
+            transform: translateY(-2px);
+        }
+
+        /* Contact Support */
+        .contact-support {
+            padding: 4rem 0;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .contact-text h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .contact-text p {
+            color: var(--txt2);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-options {
+            list-style: none;
+        }
+
+        .contact-options li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            color: var(--txt2);
+        }
+
+        .contact-options li::before {
+            content: '💬';
+            font-size: 1.2rem;
+        }
+
+        .contact-image {
+            background: var(--amber2);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            color: var(--amber);
+            font-size: 4rem;
+            font-weight: 700;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 4rem 0;
+            background: var(--s1);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .faq-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--txt);
+        }
+
+        .faq-answer {
+            color: var(--txt2);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--txt);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--muted2);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--teal);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border2);
+            padding-top: 1rem;
+            text-align: center;
+            color: var(--muted2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .actions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="landing.html" class="logo">PIN</a>
+            <ul class="nav-links">
+                <li><a href="landing.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="investors.html">Investors</a></li>
+                <li><a href="help-center.html">Help Center</a></li>
+            </ul>
+            <a href="#contact" class="btn-primary">Get Started</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Help Center</h1>
+                <p>Find answers, get support, and learn how to make the most of PIN Clinical Intelligence Platform</p>
+            </div>
+        </section>
+
+        <section class="search-section">
+            <div class="container">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search for help articles, guides, and tutorials...">
+                    <button class="search-btn">🔍</button>
+                </div>
+                <div class="popular-topics">
+                    <a href="#" class="topic-tag">Getting Started</a>
+                    <a href="#" class="topic-tag">Patient Data</a>
+                    <a href="#" class="topic-tag">Reports</a>
+                    <a href="#" class="topic-tag">Security</a>
+                    <a href="#" class="topic-tag">API</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="help-categories">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Help Categories</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Browse help articles organized by topic and user role</p>
+                
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <div class="category-icon">🚀</div>
+                        <h3>Getting Started</h3>
+                        <p>Everything you need to know to get up and running with PIN quickly and efficiently.</p>
+                        <ul class="article-links">
+                            <li><a href="#">Account Setup and Registration</a></li>
+                            <li><a href="#">Platform Navigation Guide</a></li>
+                            <li><a href="#">First Login and Dashboard Tour</a></li>
+                            <li><a href="#">Basic Configuration Steps</a></li>
+                            <li><a href="#">Common Setup Issues</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-icon">👨‍⚕️</div>
+                        <h3>Clinical Workflows</h3>
+                        <p>Guides for healthcare providers using PIN in daily clinical practice and patient care.</p>
+                        <ul class="article-links">
+                            <li><a href="#">Patient Registration Process</a></li>
+                            <li><a href="#">Clinical Data Entry Best Practices</a></li>
+                            <li><a href="#">Treatment Planning Tools</a></li>
+                            <li><a href="#">Risk Assessment Workflows</a></li>
+                            <li><a href="#">Patient Communication Features</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-icon">📊</div>
+                        <h3>Analytics & Reports</h3>
+                        <p>Learn how to use PIN's powerful analytics and reporting capabilities effectively.</p>
+                        <ul class="article-links">
+                            <li><a href="#">Dashboard Overview</a></li>
+                            <li><a href="#">Creating Custom Reports</a></li>
+                            <li><a href="#">Data Visualization Tools</a></li>
+                            <li><a href="#">Exporting Data and Reports</a></li>
+                            <li><a href="#">Scheduled Reports Setup</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-icon">💊</div>
+                        <h3>Pharmacovigilance</h3>
+                        <p>Comprehensive guides for drug safety monitoring and adverse event reporting.</p>
+                        <ul class="article-links">
+                            <li><a href="#">Adverse Event Reporting</a></li>
+                            <li><a href="#">Signal Detection Methods</a></li>
+                            <li><a href="#">Regulatory Submissions</a></li>
+                            <li><a href="#">PSUR Generation Guide</a></li>
+                            <li><a href="#">Risk Management Planning</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-icon">🔧</div>
+                        <h3>System Administration</h3>
+                        <p>Technical guides for IT administrators managing system configuration and user access.</p>
+                        <ul class="article-links">
+                            <li><a href="#">User Management and Permissions</a></li>
+                            <li><a href="#">System Configuration Guide</a></li>
+                            <li><a href="#">Data Integration Setup</a></li>
+                            <li><a href="#">Security Settings Management</a></li>
+                            <li><a href="#">Performance Monitoring</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-icon">🔗</div>
+                        <h3>Integrations & API</h3>
+                        <p>Technical documentation for integrating PIN with other systems and using the API.</p>
+                        <ul class="article-links">
+                            <li><a href="#">EMR/EHR Integration Guide</a></li>
+                            <li><a href="#">API Authentication Setup</a></li>
+                            <li><a href="#">Webhook Configuration</a></li>
+                            <li><a href="#">Data Mapping Best Practices</a></li>
+                            <li><a href="#">Troubleshooting Integrations</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-actions">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Quick Actions</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Get immediate help with common tasks and issues</p>
+                
+                <div class="actions-grid">
+                    <div class="action-card">
+                        <div class="action-icon">🔄</div>
+                        <h4>Reset Password</h4>
+                        <p>Can't access your account? Reset your password quickly and securely.</p>
+                        <a href="#" class="action-btn">Reset Password</a>
+                    </div>
+                    
+                    <div class="action-card">
+                        <div class="action-icon">📱</div>
+                        <h4>Mobile App Support</h4>
+                        <p>Get help with the PIN mobile app installation and usage.</p>
+                        <a href="#" class="action-btn">Mobile Help</a>
+                    </div>
+                    
+                    <div class="action-card">
+                        <div class="action-icon">🔧</div>
+                        <h4>System Status</h4>
+                        <p>Check the current status of PIN services and any ongoing maintenance.</p>
+                        <a href="#" class="action-btn">Check Status</a>
+                    </div>
+                    
+                    <div class="action-card">
+                        <div class="action-icon">📚</div>
+                        <h4>Video Tutorials</h4>
+                        <p>Watch step-by-step video guides for common tasks and features.</p>
+                        <a href="#" class="action-btn">Watch Videos</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-support">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Need More Help?</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Our support team is here to help you with any questions or issues</p>
+                
+                <div class="contact-content">
+                    <div class="contact-text">
+                        <h3>Contact Support</h3>
+                        <p>Get personalized help from our expert support team. We're available 24/7 to assist you with any questions or technical issues.</p>
+                        
+                        <ul class="contact-options">
+                            <li>Live chat support available 24/7</li>
+                            <li>Email support with 4-hour response time</li>
+                            <li>Phone support for enterprise customers</li>
+                            <li>Priority support for certified partners</li>
+                            <li>Community forum for peer support</li>
+                        </ul>
+                        
+                        <a href="contact-support.html" class="btn-primary">Contact Support Team</a>
+                    </div>
+                    
+                    <div class="contact-image">
+                        💬
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Frequently Asked Questions</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Quick answers to common questions about PIN platform</p>
+                
+                <div class="faq-grid">
+                    <div class="faq-card">
+                        <div class="faq-question">How do I reset my PIN password?</div>
+                        <div class="faq-answer">Click the "Forgot Password" link on the login page, enter your email address, and follow the instructions sent to your email to reset your password.</div>
+                    </div>
+                    
+                    <div class="faq-card">
+                        <div class="faq-question">What browsers are supported by PIN?</div>
+                        <div class="faq-answer">PIN supports the latest versions of Chrome, Firefox, Safari, and Edge. We recommend keeping your browser updated for the best experience.</div>
+                    </div>
+                    
+                    <div class="faq-card">
+                        <div class="faq-question">How do I export patient data?</div>
+                        <div class="faq-answer">Navigate to the Reports section, select your desired data range and parameters, then click "Export" to download data in CSV or PDF format.</div>
+                    </div>
+                    
+                    <div class="faq-card">
+                        <div class="faq-question">Is PIN HIPAA compliant?</div>
+                        <div class="faq-answer">Yes, PIN is fully HIPAA compliant and uses industry-standard encryption and security measures to protect patient data.</div>
+                    </div>
+                    
+                    <div class="faq-card">
+                        <div class="faq-question">How do I integrate PIN with our EMR system?</div>
+                        <div class="faq-answer">Contact your system administrator or our support team for assistance with EMR integration. We support standard HL7 and FHIR protocols.</div>
+                    </div>
+                    
+                    <div class="faq-card">
+                        <div class="faq-question">What is the data retention policy?</div>
+                        <div class="faq-answer">Patient data is retained according to regulatory requirements and your organization's settings. Contact your admin for specific retention periods.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PIN Platform</h4>
+                    <p>Transforming clinical data into actionable intelligence for better patient outcomes.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="security.html">Security</a></li>
+                        <li><a href="integrations.html">Integrations</a></li>
+                        <li><a href="api-docs.html">API Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="user-guides.html">User Guides</a></li>
+                        <li><a href="training.html">Training Materials</a></li>
+                        <li><a href="research.html">Research Papers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="contact-support.html">Contact Support</a></li>
+                        <li><a href="sla.html">Service Level Agreement</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PIN - Pain Innovation Network. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

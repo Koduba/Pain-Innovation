@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Guides · PIN Clinical Intelligence Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --s1: #f1f5f9;
+            --s2: #e2e8f0;
+            --border: rgba(0,0,0,0.08);
+            --border2: rgba(0,0,0,0.05);
+            --txt: #0f172a;
+            --txt2: #475569;
+            --muted: #64748b;
+            --muted2: #94a3b8;
+            --teal: #0ea5e9;
+            --teal2: rgba(14,165,233,0.10);
+            --teal3: rgba(14,165,233,0.06);
+            --amber: #f0a500;
+            --amber2: rgba(240,165,0,0.12);
+            --red: #f04054;
+            --red2: rgba(240,64,84,0.12);
+            --green: #22c98a;
+            --green2: rgba(34,201,138,0.10);
+            --blue: #6c72f0;
+            --blue2: rgba(108,114,240,0.10);
+            --violet: #a855f7;
+            --violet2: rgba(168,85,247,0.10);
+            --pharma: #14b8c8;
+            --pharma2: rgba(20,184,200,0.10);
+            --pharma3: rgba(20,184,200,0.06);
+            --shadow: 0 1px 6px rgba(0,0,0,0.40), 0 1px 3px rgba(0,0,0,0.25);
+            --shadow2: 0 6px 24px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.30);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--txt);
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.95);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--txt2);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+
+        .btn-primary {
+            background: var(--teal);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--green2) 0%, var(--teal3) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--txt2);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* User Roles */
+        .user-roles {
+            padding: 4rem 0;
+        }
+
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .role-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .role-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow2);
+        }
+
+        .role-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--teal2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--teal);
+        }
+
+        .role-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .role-card p {
+            color: var(--txt2);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .guide-links {
+            list-style: none;
+        }
+
+        .guide-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .guide-links a {
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .guide-links a:hover {
+            color: #0284c7;
+            transform: translateX(3px);
+        }
+
+        .guide-links a::before {
+            content: '→';
+            font-size: 0.8rem;
+        }
+
+        /* Quick Start */
+        .quick-start {
+            padding: 4rem 0;
+            background: var(--s1);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--teal);
+            color: var(--white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .step-card h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--txt);
+            margin-top: 0.5rem;
+        }
+
+        .step-card p {
+            color: var(--txt2);
+            font-size: 0.9rem;
+        }
+
+        /* Video Tutorials */
+        .video-section {
+            padding: 4rem 0;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .video-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow2);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: var(--s1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--teal);
+            position: relative;
+        }
+
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: var(--teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            background: #0284c7;
+            transform: scale(1.1);
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--txt);
+        }
+
+        .video-info p {
+            color: var(--txt2);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .duration {
+            background: var(--teal2);
+            color: var(--teal);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        /* Resources */
+        .resources {
+            padding: 4rem 0;
+            background: var(--s1);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .resource-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            border-color: var(--teal);
+            transform: translateY(-3px);
+        }
+
+        .resource-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--amber2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: var(--amber);
+        }
+
+        .resource-card h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .resource-card p {
+            color: var(--txt2);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .download-btn {
+            background: var(--amber);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            background: #d4940e;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--txt);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--muted2);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--teal);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border2);
+            padding-top: 1rem;
+            text-align: center;
+            color: var(--muted2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .roles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="landing.html" class="logo">PIN</a>
+            <ul class="nav-links">
+                <li><a href="landing.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="investors.html">Investors</a></li>
+                <li><a href="user-guides.html">User Guides</a></li>
+            </ul>
+            <a href="#contact" class="btn-primary">Get Started</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>User Guides</h1>
+                <p>Comprehensive guides and tutorials to help you get the most out of PIN Clinical Intelligence Platform</p>
+            </div>
+        </section>
+
+        <section class="user-roles">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Guides by Role</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Find the right guides for your specific role and responsibilities</p>
+                
+                <div class="roles-grid">
+                    <div class="role-card">
+                        <div class="role-icon">👨‍⚕️</div>
+                        <h3>Clinical Providers</h3>
+                        <p>Guides for physicians, nurses, and healthcare providers using PIN for patient care and clinical decision support.</p>
+                        <ul class="guide-links">
+                            <li><a href="#patient-registration">Patient Registration</a></li>
+                            <li><a href="#clinical-data-entry">Clinical Data Entry</a></li>
+                            <li><a href="#treatment-planning">Treatment Planning</a></li>
+                            <li><a href="#outcome-tracking">Outcome Tracking</a></li>
+                            <li><a href="#risk-assessment">Risk Assessment Tools</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="role-card">
+                        <div class="role-icon">🔬</div>
+                        <h3>Researchers</h3>
+                        <p>Resources for clinical researchers and investigators conducting studies and analyzing population health data.</p>
+                        <ul class="guide-links">
+                            <li><a href="#study-setup">Study Setup</a></li>
+                            <li><a href="#data-export">Data Export Tools</a></li>
+                            <li><a href="#analysis-workflows">Analysis Workflows</a></li>
+                            <li><a href="#irb-compliance">IRB Compliance</a></li>
+                            <li><a href="#publication-support">Publication Support</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="role-card">
+                        <div class="role-icon">💊</div>
+                        <h3>Pharmacovigilance</h3>
+                        <p>Comprehensive guides for drug safety teams monitoring adverse events and regulatory compliance.</p>
+                        <ul class="guide-links">
+                            <li><a href="#signal-detection">Signal Detection</a></li>
+                            <li><a href="#adverse-event-reporting">Adverse Event Reporting</a></li>
+                            <li><a href="#regulatory-submissions">Regulatory Submissions</a></li>
+                            <li><a href="#psur-generation">PSUR Generation</a></li>
+                            <li><a href="#risk-management">Risk Management</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="role-card">
+                        <div class="role-icon">📊</div>
+                        <h3>Administrators</h3>
+                        <p>System administration guides for IT staff managing platform configuration and user access.</p>
+                        <ul class="guide-links">
+                            <li><a href="#user-management">User Management</a></li>
+                            <li><a href="#system-configuration">System Configuration</a></li>
+                            <li><a href="#data-integration">Data Integration</a></li>
+                            <li><a href="#security-settings">Security Settings</a></li>
+                            <li><a href="#performance-monitoring">Performance Monitoring</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="role-card">
+                        <div class="role-icon">🏥</div>
+                        <h3>Healthcare Executives</h3>
+                        <p>Strategic guides for hospital administrators and healthcare executives leveraging PIN for operational insights.</p>
+                        <ul class="guide-links">
+                            <li><a href="#dashboard-overview">Executive Dashboard</a></li>
+                            <li><a href="#quality-metrics">Quality Metrics</a></li>
+                            <li><a href="#cost-analysis">Cost Analysis</a></li>
+                            <li><a href="#performance-benchmarks">Performance Benchmarks</a></li>
+                            <li><a href="#strategic-planning">Strategic Planning</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="role-card">
+                        <div class="role-icon">📱</div>
+                        <h3>Patients</h3>
+                        <p>Patient-friendly guides for using PIN features to track symptoms, communicate with providers, and manage care.</p>
+                        <ul class="guide-links">
+                            <li><a href="#patient-portal">Patient Portal Access</a></li>
+                            <li><a href="#symptom-tracking">Symptom Tracking</a></li>
+                            <li><a href="#medication-management">Medication Management</a></li>
+                            <li><a href="#appointment-scheduling">Appointment Scheduling</a></li>
+                            <li><a href="#secure-messaging">Secure Messaging</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-start">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Quick Start Guide</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Get started with PIN in just 5 simple steps</p>
+                
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h4>Create Account</h4>
+                        <p>Sign up for your PIN account and verify your credentials through your healthcare organization.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h4>Complete Profile</h4>
+                        <p>Fill out your professional profile and set up your preferences for notifications and dashboard layout.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h4>Import Data</h4>
+                        <p>Connect your existing systems or import patient data using our secure data migration tools.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h4>Configure Settings</h4>
+                        <p>Set up user permissions, clinical workflows, and reporting preferences for your organization.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">5</div>
+                        <h4>Start Using PIN</h4>
+                        <p>Begin using the platform for patient care, research, or pharmacovigilance activities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="video-section">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Video Tutorials</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Watch step-by-step video guides for common tasks and features</p>
+                
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Getting Started with PIN</h4>
+                            <p>Complete walkthrough of the PIN platform setup and initial configuration.</p>
+                            <div class="video-meta">
+                                <span class="duration">12:34</span>
+                                <span>Beginner</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Patient Data Management</h4>
+                            <p>Learn how to efficiently manage patient records and clinical data.</p>
+                            <div class="video-meta">
+                                <span class="duration">8:45</span>
+                                <span>Intermediate</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Advanced Analytics Dashboard</h4>
+                            <p>Explore powerful analytics tools and create custom reports.</p>
+                            <div class="video-meta">
+                                <span class="duration">15:20</span>
+                                <span>Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Pharmacovigilance Workflow</h4>
+                            <p>Complete guide to drug safety monitoring and adverse event reporting.</p>
+                            <div class="video-meta">
+                                <span class="duration">10:15</span>
+                                <span>Professional</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Integration with EMR Systems</h4>
+                            <p>Step-by-step guide to connecting PIN with your existing EMR/EHR systems.</p>
+                            <div class="video-meta">
+                                <span class="duration">18:30</span>
+                                <span>Technical</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="video-info">
+                            <h4>Mobile App Usage</h4>
+                            <p>How to use the PIN mobile app for on-the-go access and patient communication.</p>
+                            <div class="video-meta">
+                                <span class="duration">7:22</span>
+                                <span>All Levels</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="resources">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Downloadable Resources</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">PDF guides, checklists, and reference materials</p>
+                
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">📋</div>
+                        <h4>Implementation Checklist</h4>
+                        <p>Comprehensive checklist for successful PIN implementation in your organization.</p>
+                        <a href="#" class="download-btn">Download PDF</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">📚</div>
+                        <h4>User Manual</h4>
+                        <p>Complete user manual covering all features and functionality of the PIN platform.</p>
+                        <a href="#" class="download-btn">Download PDF</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">🔧</div>
+                        <h4>Technical Documentation</h4>
+                        <p>Technical specifications and integration guidelines for developers and IT staff.</p>
+                        <a href="#" class="download-btn">Download PDF</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">✅</div>
+                        <h4>Best Practices Guide</h4>
+                        <p>Industry best practices for clinical data management and patient care optimization.</p>
+                        <a href="#" class="download-btn">Download PDF</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">📊</div>
+                        <h4>Reporting Templates</h4>
+                        <p>Pre-built templates for common clinical and regulatory reports.</p>
+                        <a href="#" class="download-btn">Download ZIP</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">🎓</div>
+                        <h4>Training Materials</h4>
+                        <p>Comprehensive training materials for staff education and onboarding.</p>
+                        <a href="#" class="download-btn">Download PDF</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PIN Platform</h4>
+                    <p>Transforming clinical data into actionable intelligence for better patient outcomes.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="security.html">Security</a></li>
+                        <li><a href="integrations.html">Integrations</a></li>
+                        <li><a href="api-docs.html">API Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="user-guides.html">User Guides</a></li>
+                        <li><a href="training.html">Training Materials</a></li>
+                        <li><a href="research.html">Research Papers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="contact-support.html">Contact Support</a></li>
+                        <li><a href="sla.html">Service Level Agreement</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PIN - Pain Innovation Network. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

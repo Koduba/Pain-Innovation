@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Materials · PIN Clinical Intelligence Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --s1: #f1f5f9;
+            --s2: #e2e8f0;
+            --border: rgba(0,0,0,0.08);
+            --border2: rgba(0,0,0,0.05);
+            --txt: #0f172a;
+            --txt2: #475569;
+            --muted: #64748b;
+            --muted2: #94a3b8;
+            --teal: #0ea5e9;
+            --teal2: rgba(14,165,233,0.10);
+            --teal3: rgba(14,165,233,0.06);
+            --amber: #f0a500;
+            --amber2: rgba(240,165,0,0.12);
+            --red: #f04054;
+            --red2: rgba(240,64,84,0.12);
+            --green: #22c98a;
+            --green2: rgba(34,201,138,0.10);
+            --blue: #6c72f0;
+            --blue2: rgba(108,114,240,0.10);
+            --violet: #a855f7;
+            --violet2: rgba(168,85,247,0.10);
+            --pharma: #14b8c8;
+            --pharma2: rgba(20,184,200,0.10);
+            --pharma3: rgba(20,184,200,0.06);
+            --shadow: 0 1px 6px rgba(0,0,0,0.40), 0 1px 3px rgba(0,0,0,0.25);
+            --shadow2: 0 6px 24px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.30);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--txt);
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.95);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--txt2);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+
+        .btn-primary {
+            background: var(--teal);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--amber2) 0%, var(--teal3) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--txt2);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Training Programs */
+        .training-programs {
+            padding: 4rem 0;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .program-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow2);
+        }
+
+        .program-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--amber2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--amber);
+        }
+
+        .program-info h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--txt);
+        }
+
+        .program-level {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--amber2);
+            color: var(--amber);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .program-card p {
+            color: var(--txt2);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            color: var(--txt2);
+            font-size: 0.9rem;
+        }
+
+        .program-features li::before {
+            content: '✓';
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        .enroll-btn {
+            background: var(--amber);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .enroll-btn:hover {
+            background: #d4940e;
+            transform: translateY(-2px);
+        }
+
+        /* Course Schedule */
+        .course-schedule {
+            padding: 4rem 0;
+            background: var(--s1);
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .schedule-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .schedule-date {
+            background: var(--teal2);
+            color: var(--teal);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .schedule-card h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--txt);
+        }
+
+        .schedule-card p {
+            color: var(--txt2);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .schedule-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .spots {
+            background: var(--green2);
+            color: var(--green);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        /* Certification */
+        .certification {
+            padding: 4rem 0;
+        }
+
+        .cert-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .cert-text h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .cert-text p {
+            color: var(--txt2);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .cert-benefits {
+            list-style: none;
+        }
+
+        .cert-benefits li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            color: var(--txt2);
+        }
+
+        .cert-benefits li::before {
+            content: '🏆';
+            font-size: 1.2rem;
+        }
+
+        .cert-image {
+            background: var(--violet2);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            color: var(--violet);
+            font-size: 4rem;
+            font-weight: 700;
+        }
+
+        /* Resources */
+        .resources {
+            padding: 4rem 0;
+            background: var(--s1);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .resource-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            border-color: var(--teal);
+            transform: translateY(-3px);
+        }
+
+        .resource-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--blue2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: var(--blue);
+        }
+
+        .resource-card h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .resource-card p {
+            color: var(--txt2);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .access-btn {
+            background: var(--blue);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .access-btn:hover {
+            background: #5a5fe8;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--txt);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--muted2);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--teal);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border2);
+            padding-top: 1rem;
+            text-align: center;
+            color: var(--muted2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="landing.html" class="logo">PIN</a>
+            <ul class="nav-links">
+                <li><a href="landing.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="investors.html">Investors</a></li>
+                <li><a href="training.html">Training</a></li>
+            </ul>
+            <a href="#contact" class="btn-primary">Get Started</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Training Materials</h1>
+                <p>Comprehensive training programs and resources to master the PIN Clinical Intelligence Platform</p>
+            </div>
+        </section>
+
+        <section class="training-programs">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Training Programs</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Structured learning paths designed for different roles and skill levels</p>
+                
+                <div class="programs-grid">
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">🎓</div>
+                            <div class="program-info">
+                                <h3>Foundations Course</h3>
+                                <span class="program-level">Beginner</span>
+                            </div>
+                        </div>
+                        <p>Comprehensive introduction to PIN platform for new users covering all basic functionality and workflows.</p>
+                        <ul class="program-features">
+                            <li>Platform overview and navigation</li>
+                            <li>Patient registration and management</li>
+                            <li>Basic data entry and reporting</li>
+                            <li>Security and compliance basics</li>
+                            <li>Hands-on exercises and quizzes</li>
+                        </ul>
+                        <a href="#" class="enroll-btn">Enroll Now</a>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">👨‍⚕️</div>
+                            <div class="program-info">
+                                <h3>Clinical User Training</h3>
+                                <span class="program-level">Intermediate</span>
+                            </div>
+                        </div>
+                        <p>Specialized training for healthcare providers focusing on clinical workflows and patient care optimization.</p>
+                        <ul class="program-features">
+                            <li>Advanced clinical data management</li>
+                            <li>Treatment planning tools</li>
+                            <li>Risk assessment and decision support</li>
+                            <li>Patient communication features</li>
+                            <li>Clinical case studies</li>
+                        </ul>
+                        <a href="#" class="enroll-btn">Enroll Now</a>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">🔬</div>
+                            <div class="program-info">
+                                <h3>Research & Analytics</h3>
+                                <span class="program-level">Advanced</span>
+                            </div>
+                        </div>
+                        <p>Advanced training for researchers and data scientists on analytics, reporting, and research methodologies.</p>
+                        <ul class="program-features">
+                            <li>Advanced analytics dashboard</li>
+                            <li>Custom report creation</li>
+                            <li>Data export and analysis</li>
+                            <li>Research study design</li>
+                            <li>Statistical analysis tools</li>
+                        </ul>
+                        <a href="#" class="enroll-btn">Enroll Now</a>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">💊</div>
+                            <div class="program-info">
+                                <h3>Pharmacovigilance Training</h3>
+                                <span class="program-level">Professional</span>
+                            </div>
+                        </div>
+                        <p>Specialized program for drug safety professionals covering adverse event monitoring and regulatory compliance.</p>
+                        <ul class="program-features">
+                            <li>Signal detection methodologies</li>
+                            <li>Adverse event reporting workflows</li>
+                            <li>Regulatory submission requirements</li>
+                            <li>Risk management strategies</li>
+                            <li>PSUR generation and reporting</li>
+                        </ul>
+                        <a href="#" class="enroll-btn">Enroll Now</a>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">🔧</div>
+                            <div class="program-info">
+                                <h3>System Administration</h3>
+                                <span class="program-level">Technical</span>
+                            </div>
+                        </div>
+                        <p>Technical training for IT administrators managing system configuration, integrations, and user management.</p>
+                        <ul class="program-features">
+                            <li>User access and permissions</li>
+                            <li>System configuration and customization</li>
+                            <li>Data integration and API usage</li>
+                            <li>Security management</li>
+                            <li>Performance monitoring</li>
+                        </ul>
+                        <a href="#" class="enroll-btn">Enroll Now</a>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-header">
+                            <div class="program-icon">🏢</div>
+                            <div class="program-info">
+                                <h3>Executive Leadership</h3>
+                                <span class="program-level">Strategic</span>
+                            </div>
+                        </div>
+                        <p>High-level training for healthcare executives on strategic use of PIN for operational excellence and business intelligence.</p>
+                        <ul class="program-features">
+                            <li>Executive dashboard utilization</li>
+                            <li>Quality metrics and KPIs</li>
+                            <li>Cost-benefit analysis</li>
+                            <li>Strategic planning tools</li>
+                            <li>Performance benchmarking</li>
+                        </ul>
+                        <a href="#" class="enroll-btn">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="course-schedule">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Upcoming Sessions</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Join our live training sessions with expert instructors</p>
+                
+                <div class="schedule-grid">
+                    <div class="schedule-card">
+                        <div class="schedule-date">June 15, 2024</div>
+                        <h4>Foundations Course - Live Workshop</h4>
+                        <p>Interactive 2-day workshop covering all PIN platform basics with hands-on exercises.</p>
+                        <div class="schedule-meta">
+                            <span>9:00 AM - 5:00 PM EST</span>
+                            <span class="spots">12 spots left</span>
+                        </div>
+                    </div>
+                    
+                    <div class="schedule-card">
+                        <div class="schedule-date">June 22, 2024</div>
+                        <h4>Advanced Analytics Masterclass</h4>
+                        <p>Deep dive into PIN analytics capabilities for experienced users and data analysts.</p>
+                        <div class="schedule-meta">
+                            <span>1:00 PM - 4:00 PM EST</span>
+                            <span class="spots">8 spots left</span>
+                        </div>
+                    </div>
+                    
+                    <div class="schedule-card">
+                        <div class="schedule-date">June 29, 2024</div>
+                        <h4>Pharmacovigilance Certification Prep</h4>
+                        <p>Intensive preparation course for PIN pharmacovigilance certification exam.</p>
+                        <div class="schedule-meta">
+                            <span>10:00 AM - 2:00 PM EST</span>
+                            <span class="spots">15 spots left</span>
+                        </div>
+                    </div>
+                    
+                    <div class="schedule-card">
+                        <div class="schedule-date">July 6, 2024</div>
+                        <h4>System Administration Bootcamp</h4>
+                        <p>Comprehensive training for IT staff managing PIN deployments and integrations.</p>
+                        <div class="schedule-meta">
+                            <span>9:00 AM - 6:00 PM EST</span>
+                            <span class="spots">10 spots left</span>
+                        </div>
+                    </div>
+                    
+                    <div class="schedule-card">
+                        <div class="schedule-date">July 13, 2024</div>
+                        <h4>Clinical Best Practices Webinar</h4>
+                        <p>Free webinar on clinical best practices and workflow optimization with PIN.</p>
+                        <div class="schedule-meta">
+                            <span>12:00 PM - 1:30 PM EST</span>
+                            <span class="spots">50 spots left</span>
+                        </div>
+                    </div>
+                    
+                    <div class="schedule-card">
+                        <div class="schedule-date">July 20, 2024</div>
+                        <h4>Research Methods Workshop</h4>
+                        <p>Hands-on workshop for clinical researchers using PIN for study design and analysis.</p>
+                        <div class="schedule-meta">
+                            <span>2:00 PM - 5:00 PM EST</span>
+                            <span class="spots">20 spots left</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="certification">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Professional Certification</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Become a certified PIN professional and validate your expertise</p>
+                
+                <div class="cert-content">
+                    <div class="cert-text">
+                        <h3>PIN Certified Professional Program</h3>
+                        <p>Our comprehensive certification program validates your expertise in using the PIN Clinical Intelligence Platform. Certification demonstrates your proficiency to employers, colleagues, and patients.</p>
+                        
+                        <ul class="cert-benefits">
+                            <li>Industry-recognized credential</li>
+                            <li>Enhanced career opportunities</li>
+                            <li>Access to exclusive resources and community</li>
+                            <li>Continuing education credits</li>
+                            <li>Priority support and advanced features</li>
+                        </ul>
+                        
+                        <a href="#" class="enroll-btn">Learn More About Certification</a>
+                    </div>
+                    
+                    <div class="cert-image">
+                        🏆
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="resources">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Learning Resources</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Supplemental materials to enhance your learning experience</p>
+                
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">📚</div>
+                        <h4>Knowledge Base</h4>
+                        <p>Comprehensive documentation and articles covering all aspects of the PIN platform.</p>
+                        <a href="#" class="access-btn">Access Knowledge Base</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">🎥</div>
+                        <h4>Video Library</h4>
+                        <p>Extensive collection of video tutorials, webinars, and training sessions on demand.</p>
+                        <a href="#" class="access-btn">Browse Videos</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">💬</div>
+                        <h4>Community Forum</h4>
+                        <p>Connect with other PIN users, share best practices, and get help from experts.</p>
+                        <a href="#" class="access-btn">Join Community</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">📝</div>
+                        <h4>Practice Exercises</h4>
+                        <p>Hands-on exercises and simulations to practice your skills in a safe environment.</p>
+                        <a href="#" class="access-btn">Start Practicing</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">🔧</div>
+                        <h4>Sandbox Environment</h4>
+                        <p>Free sandbox account to explore PIN features without affecting production data.</p>
+                        <a href="#" class="access-btn">Request Access</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">📊</div>
+                        <h4>Assessment Tools</h4>
+                        <p>Self-assessment tools and quizzes to test your knowledge and track progress.</p>
+                        <a href="#" class="access-btn">Take Assessment</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PIN Platform</h4>
+                    <p>Transforming clinical data into actionable intelligence for better patient outcomes.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="security.html">Security</a></li>
+                        <li><a href="integrations.html">Integrations</a></li>
+                        <li><a href="api-docs.html">API Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="user-guides.html">User Guides</a></li>
+                        <li><a href="training.html">Training Materials</a></li>
+                        <li><a href="research.html">Research Papers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="contact-support.html">Contact Support</a></li>
+                        <li><a href="sla.html">Service Level Agreement</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PIN - Pain Innovation Network. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

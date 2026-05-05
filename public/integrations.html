@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrations · PIN Clinical Intelligence Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --s1: #f1f5f9;
+            --s2: #e2e8f0;
+            --border: rgba(0,0,0,0.08);
+            --border2: rgba(0,0,0,0.05);
+            --txt: #0f172a;
+            --txt2: #475569;
+            --muted: #64748b;
+            --muted2: #94a3b8;
+            --teal: #0ea5e9;
+            --teal2: rgba(14,165,233,0.10);
+            --teal3: rgba(14,165,233,0.06);
+            --amber: #f0a500;
+            --amber2: rgba(240,165,0,0.12);
+            --red: #f04054;
+            --red2: rgba(240,64,84,0.12);
+            --green: #22c98a;
+            --green2: rgba(34,201,138,0.10);
+            --blue: #6c72f0;
+            --blue2: rgba(108,114,240,0.10);
+            --violet: #a855f7;
+            --violet2: rgba(168,85,247,0.10);
+            --pharma: #14b8c8;
+            --pharma2: rgba(20,184,200,0.10);
+            --pharma3: rgba(20,184,200,0.06);
+            --shadow: 0 1px 6px rgba(0,0,0,0.40), 0 1px 3px rgba(0,0,0,0.25);
+            --shadow2: 0 6px 24px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.30);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--txt);
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.95);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--txt2);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+
+        .btn-primary {
+            background: var(--teal);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--blue2) 0%, var(--violet2) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--txt2);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Integration Categories */
+        .integration-categories {
+            padding: 4rem 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .category-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow2);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--blue2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--blue);
+        }
+
+        .category-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .category-card p {
+            color: var(--txt2);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .integration-list {
+            list-style: none;
+        }
+
+        .integration-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border2);
+            font-size: 0.9rem;
+            color: var(--txt2);
+        }
+
+        .integration-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Featured Integrations */
+        .featured-integrations {
+            padding: 4rem 0;
+            background: var(--s1);
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .featured-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .featured-card:hover {
+            border-color: var(--teal);
+            transform: translateY(-3px);
+        }
+
+        .featured-logo {
+            width: 80px;
+            height: 80px;
+            background: var(--teal2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: var(--teal);
+        }
+
+        .featured-card h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--txt);
+        }
+
+        .featured-card p {
+            color: var(--txt2);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--green2);
+            color: var(--green);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* API Section */
+        .api-section {
+            padding: 4rem 0;
+        }
+
+        .api-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .api-text h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .api-text p {
+            color: var(--txt2);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .api-features {
+            list-style: none;
+        }
+
+        .api-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            color: var(--txt2);
+        }
+
+        .api-features li::before {
+            content: '✓';
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        .api-code {
+            background: var(--txt);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+
+        .code-comment {
+            color: var(--muted2);
+        }
+
+        .code-keyword {
+            color: var(--blue);
+        }
+
+        .code-string {
+            color: var(--green);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--txt);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--muted2);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--teal);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border2);
+            padding-top: 1rem;
+            text-align: center;
+            color: var(--muted2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .api-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="landing.html" class="logo">PIN</a>
+            <ul class="nav-links">
+                <li><a href="landing.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="investors.html">Investors</a></li>
+                <li><a href="integrations.html">Integrations</a></li>
+            </ul>
+            <a href="#contact" class="btn-primary">Get Started</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Seamless Integrations</h1>
+                <p>Connect PIN with your existing healthcare ecosystem for unified data management</p>
+            </div>
+        </section>
+
+        <section class="integration-categories">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Integration Categories</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Comprehensive connectivity with healthcare systems and data sources</p>
+                
+                <div class="category-grid">
+                    <div class="category-card">
+                        <div class="category-icon">🏥</div>
+                        <h3>EMR/EHR Systems</h3>
+                        <p>Seamless integration with major electronic medical record systems for comprehensive patient data capture.</p>
+                        <ul class="integration-list">
+                            <li>Epic Systems</li>
+                            <li>Cerner</li>
+                            <li>Allscripts</li>
+                            <li> Athenahealth</li>
+                            <li> eClinical Works</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-icon">🧪</div>
+                        <h3>Laboratory Systems</h3>
+                        <p>Connect with laboratory information systems for biomarker and genetic data integration.</p>
+                        <ul class="integration-list">
+                            <li>Quest Diagnostics</li>
+                            <li>Laboratory Corporation</li>
+                            <li>Mayo Clinic Laboratories</li>
+                            <li>Sunquest</li>
+                            <li>SoftLab</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-icon">💊</div>
+                        <h3>Pharmacy Systems</h3>
+                        <p>Integration with pharmacy management systems for medication tracking and outcomes.</p>
+                        <ul class="integration-list">
+                            <li>Omnicell</li>
+                            <li>McKesson</li>
+                            <li>Cerner Pharmacy</li>
+                            <li>BD Pyxis</li>
+                            <li>CareFusion</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-icon">📱</div>
+                        <h3>Mobile Health Apps</h3>
+                        <p>Support for patient mobile applications and wearable device data collection.</p>
+                        <ul class="integration-list">
+                            <li>Apple HealthKit</li>
+                            <li>Google Fit</li>
+                            <li>Samsung Health</li>
+                            <li>Fitbit</li>
+                            <li>Garmin Health</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-icon">📊</div>
+                        <h3>Billing & Claims</h3>
+                        <p>Connect with billing and claims systems for financial data and reimbursement tracking.</p>
+                        <ul class="integration-list">
+                            <li>AdvancedMD</li>
+                            <li>Kareo</li>
+                            <li>DrChrono</li>
+                            <li>Practice Fusion</li>
+                            <li>TherapyNotes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="category-card">
+                        <div class="category-icon">🔬</div>
+                        <h3>Research Platforms</h3>
+                        <p>Integration with clinical research platforms and trial management systems.</p>
+                        <ul class="integration-list">
+                            <li>RedCap</li>
+                            <li>ClinicalTrials.gov</li>
+                            <li>Medidata</li>
+                            <li>Oracle Clinical</li>
+                            <li>OpenClinica</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-integrations">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Featured Partners</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Trusted partnerships with leading healthcare technology providers</p>
+                
+                <div class="featured-grid">
+                    <div class="featured-card">
+                        <div class="featured-logo">🏥</div>
+                        <h4>Epic Systems</h4>
+                        <p>Full integration with Epic's MyChart and EpicCare for seamless data exchange</p>
+                        <span class="badge">Certified</span>
+                    </div>
+                    
+                    <div class="featured-card">
+                        <div class="featured-logo">💊</div>
+                        <h4>McKesson</h4>
+                        <p>Pharmacy management integration for medication tracking and outcomes</p>
+                        <span class="badge">Premium</span>
+                    </div>
+                    
+                    <div class="featured-card">
+                        <div class="featured-logo">🧪</div>
+                        <h4>Quest Diagnostics</h4>
+                        <p>Laboratory data integration for comprehensive biomarker analysis</p>
+                        <span class="badge">Advanced</span>
+                    </div>
+                    
+                    <div class="featured-card">
+                        <div class="featured-logo">📱</div>
+                        <h4>Apple HealthKit</h4>
+                        <p>Mobile health data integration for real-time patient monitoring</p>
+                        <span class="badge">Popular</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="api-section">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">RESTful API</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Powerful API for custom integrations and development</p>
+                
+                <div class="api-content">
+                    <div class="api-text">
+                        <h3>Build Custom Solutions</h3>
+                        <p>Our comprehensive RESTful API allows you to build custom integrations and extend PIN's capabilities to meet your specific needs.</p>
+                        
+                        <ul class="api-features">
+                            <li>RESTful architecture with JSON responses</li>
+                            <li>OAuth 2.0 authentication for secure access</li>
+                            <li>Comprehensive documentation and SDKs</li>
+                            <li>Rate limiting and monitoring tools</li>
+                            <li>Sandbox environment for testing</li>
+                            <li>Webhook support for real-time updates</li>
+                        </ul>
+                        
+                        <a href="api-docs.html" class="btn-primary">View API Documentation</a>
+                    </div>
+                    
+                    <div class="api-code">
+                        <span class="code-comment">// Example API call</span><br>
+                        <span class="code-keyword">const</span> response = <span class="code-keyword">await</span> fetch(<span class="code-string">'https://api.pin.ai/v1/patients'</span>, {<br>
+                        &nbsp;&nbsp;method: <span class="code-string">'GET'</span>,<br>
+                        &nbsp;&nbsp;headers: {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'Authorization'</span>: <span class="code-string">'Bearer YOUR_API_KEY'</span>,<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'Content-Type'</span>: <span class="code-string">'application/json'</span><br>
+                        &nbsp;&nbsp;}<br>
+                        });<br>
+                        <span class="code-keyword">const</span> data = <span class="code-keyword">await</span> response.json();
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PIN Platform</h4>
+                    <p>Transforming clinical data into actionable intelligence for better patient outcomes.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="security.html">Security</a></li>
+                        <li><a href="integrations.html">Integrations</a></li>
+                        <li><a href="api-docs.html">API Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="user-guides.html">User Guides</a></li>
+                        <li><a href="training.html">Training Materials</a></li>
+                        <li><a href="research.html">Research Papers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="contact-support.html">Contact Support</a></li>
+                        <li><a href="sla.html">Service Level Agreement</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PIN - Pain Innovation Network. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

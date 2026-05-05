@@ -19,6 +19,42 @@
       "destination": "/features.html"
     },
     {
+      "source": "/security",
+      "destination": "/security.html"
+    },
+    {
+      "source": "/integrations",
+      "destination": "/integrations.html"
+    },
+    {
+      "source": "/api-docs",
+      "destination": "/api-docs.html"
+    },
+    {
+      "source": "/user-guides",
+      "destination": "/user-guides.html"
+    },
+    {
+      "source": "/training",
+      "destination": "/training.html"
+    },
+    {
+      "source": "/research",
+      "destination": "/research.html"
+    },
+    {
+      "source": "/help-center",
+      "destination": "/help-center.html"
+    },
+    {
+      "source": "/contact-support",
+      "destination": "/contact-support.html"
+    },
+    {
+      "source": "/sla",
+      "destination": "/sla.html"
+    },
+    {
       "source": "/survey",
       "destination": "/survey.html"
     }

@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Support · PIN Clinical Intelligence Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --s1: #f1f5f9;
+            --s2: #e2e8f0;
+            --border: rgba(0,0,0,0.08);
+            --border2: rgba(0,0,0,0.05);
+            --txt: #0f172a;
+            --txt2: #475569;
+            --muted: #64748b;
+            --muted2: #94a3b8;
+            --teal: #0ea5e9;
+            --teal2: rgba(14,165,233,0.10);
+            --teal3: rgba(14,165,233,0.06);
+            --amber: #f0a500;
+            --amber2: rgba(240,165,0,0.12);
+            --red: #f04054;
+            --red2: rgba(240,64,84,0.12);
+            --green: #22c98a;
+            --green2: rgba(34,201,138,0.10);
+            --blue: #6c72f0;
+            --blue2: rgba(108,114,240,0.10);
+            --violet: #a855f7;
+            --violet2: rgba(168,85,247,0.10);
+            --pharma: #14b8c8;
+            --pharma2: rgba(20,184,200,0.10);
+            --pharma3: rgba(20,184,200,0.06);
+            --shadow: 0 1px 6px rgba(0,0,0,0.40), 0 1px 3px rgba(0,0,0,0.25);
+            --shadow2: 0 6px 24px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.30);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--txt);
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.95);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--txt2);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+
+        .btn-primary {
+            background: var(--teal);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--green2) 0%, var(--blue2) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--txt2);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Contact Options */
+        .contact-options {
+            padding: 4rem 0;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .option-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow2);
+        }
+
+        .option-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--teal2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--teal);
+        }
+
+        .option-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .option-card p {
+            color: var(--txt2);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-btn {
+            background: var(--teal);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+        }
+
+        .availability {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--green);
+            font-weight: 500;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            padding: 4rem 0;
+            background: var(--s1);
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--txt);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--teal);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .required {
+            color: var(--red);
+        }
+
+        .submit-btn {
+            background: var(--teal);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+        }
+
+        /* Support Hours */
+        .support-hours {
+            padding: 4rem 0;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .hours-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .timezone {
+            background: var(--amber2);
+            color: var(--amber);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .hours-card h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--txt);
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
+            padding: 0.5rem 0;
+            color: var(--txt2);
+            font-size: 0.9rem;
+        }
+
+        /* Emergency Support */
+        .emergency-support {
+            padding: 4rem 0;
+            background: var(--red2);
+            border: 1px solid var(--red);
+        }
+
+        .emergency-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .emergency-content h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--red);
+        }
+
+        .emergency-content p {
+            color: var(--txt2);
+            margin-bottom: 2rem;
+        }
+
+        .emergency-btn {
+            background: var(--red);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .emergency-btn:hover {
+            background: #e03347;
+            transform: translateY(-2px);
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 4rem 0;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .faq-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--txt);
+        }
+
+        .faq-answer {
+            color: var(--txt2);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--txt);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--muted2);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--teal);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border2);
+            padding-top: 1rem;
+            text-align: center;
+            color: var(--muted2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="landing.html" class="logo">PIN</a>
+            <ul class="nav-links">
+                <li><a href="landing.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="investors.html">Investors</a></li>
+                <li><a href="contact-support.html">Contact Support</a></li>
+            </ul>
+            <a href="#contact" class="btn-primary">Get Started</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Contact Support</h1>
+                <p>Our expert support team is here to help you 24/7 with any questions or technical issues</p>
+            </div>
+        </section>
+
+        <section class="contact-options">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">How Can We Help?</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Choose the support option that best fits your needs</p>
+                
+                <div class="options-grid">
+                    <div class="option-card">
+                        <div class="option-icon">💬</div>
+                        <h3>Live Chat</h3>
+                        <p>Get instant help from our support team through live chat. Perfect for quick questions and real-time assistance.</p>
+                        <a href="#" class="contact-btn">Start Chat</a>
+                        <div class="availability">Available 24/7</div>
+                    </div>
+                    
+                    <div class="option-card">
+                        <div class="option-icon">📧</div>
+                        <h3>Email Support</h3>
+                        <p>Send us detailed questions and receive comprehensive responses from our technical experts.</p>
+                        <a href="#" class="contact-btn">Send Email</a>
+                        <div class="availability">Response within 4 hours</div>
+                    </div>
+                    
+                    <div class="option-card">
+                        <div class="option-icon">📞</div>
+                        <h3>Phone Support</h3>
+                        <p>Speak directly with our support specialists for complex issues requiring immediate attention.</p>
+                        <a href="#" class="contact-btn">Call Now</a>
+                        <div class="availability">Enterprise customers only</div>
+                    </div>
+                    
+                    <div class="option-card">
+                        <div class="option-icon">🎫</div>
+                        <h3>Support Ticket</h3>
+                        <p>Create a support ticket for tracked resolution of technical issues and feature requests.</p>
+                        <a href="#" class="contact-btn">Create Ticket</a>
+                        <div class="availability">Tracked resolution</div>
+                    </div>
+                    
+                    <div class="option-card">
+                        <div class="option-icon">👥</div>
+                        <h3>Community Forum</h3>
+                        <p>Connect with other PIN users, share best practices, and get help from the community.</p>
+                        <a href="#" class="contact-btn">Join Forum</a>
+                        <div class="availability">Peer support available</div>
+                    </div>
+                    
+                    <div class="option-card">
+                        <div class="option-icon">📅</div>
+                        <h3>Scheduled Call</h3>
+                        <p>Book a scheduled call with our support team for in-depth assistance and training.</p>
+                        <a href="#" class="contact-btn">Schedule Call</a>
+                        <div class="availability">Book in advance</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-form">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Send Us a Message</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Fill out the form below and we'll get back to you as soon as possible</p>
+                
+                <div class="form-container">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="organization">Organization</label>
+                            <input type="text" id="organization" name="organization">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="issue-type">Issue Type <span class="required">*</span></label>
+                            <select id="issue-type" name="issue-type" required>
+                                <option value="">Select issue type</option>
+                                <option value="technical">Technical Issue</option>
+                                <option value="account">Account Problem</option>
+                                <option value="billing">Billing Question</option>
+                                <option value="feature">Feature Request</option>
+                                <option value="integration">Integration Help</option>
+                                <option value="training">Training Request</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="priority">Priority Level</label>
+                            <select id="priority" name="priority">
+                                <option value="low">Low - General Question</option>
+                                <option value="medium">Medium - Non-Urgent Issue</option>
+                                <option value="high">High - Urgent Issue</option>
+                                <option value="critical">Critical - System Down</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject <span class="required">*</span></label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message <span class="required">*</span></label>
+                            <textarea id="message" name="message" placeholder="Please describe your issue or question in detail..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="support-hours">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Support Hours</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Our support team is available across multiple time zones</p>
+                
+                <div class="hours-grid">
+                    <div class="hours-card">
+                        <div class="timezone">🇺🇸 Eastern Time</div>
+                        <h4>North America</h4>
+                        <ul class="hours-list">
+                            <li>Monday - Friday: 8:00 AM - 8:00 PM</li>
+                            <li>Saturday: 10:00 AM - 6:00 PM</li>
+                            <li>Sunday: 12:00 PM - 6:00 PM</li>
+                            <li>24/7 Emergency Support Available</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="hours-card">
+                        <div class="timezone">🇬🇧 London Time</div>
+                        <h4>Europe</h4>
+                        <ul class="hours-list">
+                            <li>Monday - Friday: 9:00 AM - 6:00 PM</li>
+                            <li>Saturday: 10:00 AM - 4:00 PM</li>
+                            <li>Sunday: Closed</li>
+                            <li>24/7 Emergency Support Available</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="hours-card">
+                        <div class="timezone">🇯🇵 Tokyo Time</div>
+                        <h4>Asia Pacific</h4>
+                        <ul class="hours-list">
+                            <li>Monday - Friday: 9:00 AM - 6:00 PM</li>
+                            <li>Saturday: 10:00 AM - 4:00 PM</li>
+                            <li>Sunday: Closed</li>
+                            <li>24/7 Emergency Support Available</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="hours-card">
+                        <div class="timezone">🌏 Sydney Time</div>
+                        <h4>Australia</h4>
+                        <ul class="hours-list">
+                            <li>Monday - Friday: 8:00 AM - 6:00 PM</li>
+                            <li>Saturday: 9:00 AM - 3:00 PM</li>
+                            <li>Sunday: Closed</li>
+                            <li>24/7 Emergency Support Available</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="emergency-support">
+            <div class="container">
+                <div class="emergency-content">
+                    <h3>🚨 Emergency Support</h3>
+                    <p>For critical system outages, data breaches, or other urgent issues that require immediate attention, please contact our emergency support team.</p>
+                    <a href="#" class="emergency-btn">Contact Emergency Support</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--txt);">Common Support Questions</h2>
+                <p style="text-align: center; color: var(--txt2); max-width: 600px; margin: 0 auto 3rem;">Quick answers to frequently asked support questions</p>
+                
+                <div class="faq-grid">
+                    <div class="faq-card">
+                        <div class="faq-question">What is the average response time for support tickets?</div>
+                        <div class="faq-answer">Standard support tickets receive responses within 4 hours during business hours. Priority support customers receive responses within 1 hour.</div>
+                    </div>
+                    
+                    <div class="faq-card">
+                        <div class="faq-question">How do I report a system outage or emergency?</div>
+                        <div class="faq-answer">Use the emergency support button above or call our 24/7 emergency hotline for immediate assistance with critical issues.</div>
+                    </div>
+                    
+                    <div class="faq-card">
+                        <div class="faq-question">Can I schedule a training session with support?</div>
+                        <div class="faq-answer">Yes, enterprise customers can schedule personalized training sessions. Contact your account manager or use the scheduled call option.</div>
+                    </div>
+                    
+                    <div class="faq-card">
+                        <div class="faq-question">What information should I include in a support request?</div>
+                        <div class="faq-answer">Include your account details, issue description, steps to reproduce, error messages, and any relevant screenshots for faster resolution.</div>
+                    </div>
+                    
+                    <div class="faq-card">
+                        <div class="faq-question">Is there a community forum for user support?</div>
+                        <div class="faq-answer">Yes, our community forum is available for peer support, best practices, and user discussions moderated by PIN experts.</div>
+                    </div>
+                    
+                    <div class="faq-card">
+                        <div class="faq-question">How do I escalate a support issue?</div>
+                        <div class="faq-answer">Reply to your existing ticket with "ESCALATE" in the subject line, or contact your account manager for priority escalation.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PIN Platform</h4>
+                    <p>Transforming clinical data into actionable intelligence for better patient outcomes.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="security.html">Security</a></li>
+                        <li><a href="integrations.html">Integrations</a></li>
+                        <li><a href="api-docs.html">API Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="user-guides.html">User Guides</a></li>
+                        <li><a href="training.html">Training Materials</a></li>
+                        <li><a href="research.html">Research Papers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="contact-support.html">Contact Support</a></li>
+                        <li><a href="sla.html">Service Level Agreement</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PIN - Pain Innovation Network. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
