@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIN · Investor Relations | Clinical Intelligence Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f8fafc; --white:#ffffff; --s1:#f1f5f9; --s2:#e2e8f0;
+  --border:rgba(0,0,0,0.08); --border2:rgba(0,0,0,0.05);
+  --txt:#0f172a; --txt2:#475569; --muted:#64748b; --muted2:#94a3b8;
+  --teal:#0ea5e9; --teal2:rgba(14,165,233,0.10); --teal3:rgba(14,165,233,0.06);
+  --amber:#f0a500; --amber2:rgba(240,165,0,0.12);
+  --red:#f04054; --red2:rgba(240,64,84,0.12);
+  --green:#22c98a; --green2:rgba(34,201,138,0.10);
+  --blue:#6c72f0; --blue2:rgba(108,114,240,0.10);
+  --violet:#a855f7; --violet2:rgba(168,85,247,0.10);
+  --pharma:#14b8c8; --pharma2:rgba(20,184,200,0.10); --pharma3:rgba(20,184,200,0.06);
+  --shadow:0 1px 6px rgba(0,0,0,0.40),0 1px 3px rgba(0,0,0,0.25);
+  --shadow2:0 6px 24px rgba(0,0,0,0.55),0 2px 8px rgba(0,0,0,0.30);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--txt);font-family:'Poppins',sans-serif;font-size:13px;line-height:1.5;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,rgba(14,165,233,0.05) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;z-index:0;}
+.container{position:relative;z-index:1;min-height:100vh;}
+
+/* Header */
+header{padding:20px 0;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100;}
+.header-content{max-width:1200px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;align-items:center;}
+.logo{display:flex;align-items:center;gap:12px;}
+.logo-mark{font-family:'Poppins',sans-serif;font-weight:600;font-size:20px;color:var(--txt);letter-spacing:-.2px;}
+.logo-mark span{color:var(--teal);}
+.logo-sub{font-size:9px;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);}
+.nav-links{display:flex;gap:24px;}
+.nav-link{color:var(--muted);text-decoration:none;font-size:11px;font-weight:500;transition:color .15s;}
+.nav-link:hover{color:var(--teal);}
+.back-link{display:flex;align-items:center;gap:6px;color:var(--teal);text-decoration:none;font-size:11px;font-weight:600;}
+.back-link::before{content:'←';}
+
+/* Content */
+.content{max-width:1200px;margin:0 auto;padding:40px 28px;}
+
+/* INVESTOR SECTIONS */
+.vc-hero{background:linear-gradient(135deg,var(--teal2),var(--pharma3));border:1px solid rgba(0,113,206,.15);border-radius:12px;padding:40px;margin-bottom:32px;}
+.vc-tag{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);border:1px solid rgba(0,113,206,.2);display:inline-block;padding:4px 12px;border-radius:4px;margin-bottom:16px;font-weight:700;}
+.vc-hero h2{font-family:'Poppins',sans-serif;font-weight:600;font-size:32px;line-height:1.2;margin-bottom:14px;}
+.vc-hero h2 em{font-style:italic;color:var(--teal);}
+.vc-hero p{font-size:13px;color:var(--txt2);max-width:640px;line-height:1.8;}
+
+.stitle{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.stitle::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
+
+/* Market Grid */
+.mkt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;}
+.mkt-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:24px;text-align:center;box-shadow:var(--shadow);transition:box-shadow .2s;}
+.mkt-card:hover{box-shadow:var(--shadow2);}
+.mkt-n{font-family:'Poppins',sans-serif;font-weight:700;font-size:28px;color:var(--teal);line-height:1;margin-bottom:6px;}
+.mkt-l{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;}
+.mkt-s{font-size:10px;color:var(--muted2);margin-top:4px;}
+
+/* Revenue Table */
+.panel{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:32px;}
+.panel:hover{box-shadow:var(--shadow2);}
+.p-head{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--white);}
+.p-title{font-size:12px;font-weight:600;color:var(--txt2);}
+.p-body{padding:20px;}
+
+.rev-table{width:100%;border-collapse:collapse;}
+.rev-table th{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:10px 14px;border-bottom:1px solid var(--border);text-align:left;font-weight:700;}
+.rev-table td{padding:14px;border-bottom:1px solid var(--border2);font-size:11px;vertical-align:top;}
+.rev-table tr:last-child td{border-bottom:none;}
+.rev-table tr:hover{background:var(--teal2);}
+.rev-nm{font-size:13px;font-weight:600;color:var(--txt);margin-bottom:3px;}
+.rev-d{font-size:10px;color:var(--muted);}
+
+/* Phase Grid */
+.phase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px;}
+.phase-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:24px;box-shadow:var(--shadow);transition:box-shadow .2s;}
+.phase-card:hover{box-shadow:var(--shadow2);}
+.phase-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;display:block;font-weight:700;}
+.phase-title{font-family:'Poppins',sans-serif;font-weight:600;font-size:18px;margin-bottom:12px;color:var(--txt);}
+.phase-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.phase-list li{font-size:11px;color:var(--muted);display:flex;align-items:flex-start;gap:8px;}
+.phase-list li::before{content:'→';color:var(--teal);flex-shrink:0;font-weight:700;}
+.phase-fund{font-family:'Poppins',sans-serif;font-weight:700;font-size:20px;color:var(--amber);margin-top:16px;}
+
+/* Competitive Moat */
+.moat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px;}
+.moat{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:24px;box-shadow:var(--shadow);transition:box-shadow .2s;}
+.moat:hover{box-shadow:var(--shadow2);}
+.moat-n{font-family:'Poppins',sans-serif;font-weight:700;font-size:32px;color:var(--s2);line-height:1;margin-bottom:10px;}
+.moat-t{font-size:13px;font-weight:700;color:var(--txt);margin-bottom:6px;}
+.moat-d{font-size:11px;color:var(--muted);line-height:1.7;}
+
+/* Pills */
+.pp-low{background:var(--green2);color:var(--green);border:1px solid rgba(8,119,87,.2);font-size:9px;font-weight:700;padding:3px 10px;border-radius:10px;text-transform:uppercase;display:inline-block;}
+.pp-mod{background:var(--amber2);color:var(--amber);border:1px solid rgba(196,122,0,.2);font-size:9px;font-weight:700;padding:3px 10px;border-radius:10px;text-transform:uppercase;display:inline-block;}
+.pp-act{background:var(--pharma2);color:var(--pharma);border:1px solid rgba(10,110,124,.2);font-size:9px;font-weight:700;padding:3px 10px;border-radius:10px;text-transform:uppercase;display:inline-block;}
+
+.cv{color:var(--teal);}
+
+/* Stats Row */
+.stats-row{display:flex;justify-content:center;gap:60px;margin-bottom:40px;}
+.stat{text-align:center;}
+.stat-val{font-family:'Poppins',sans-serif;font-weight:700;font-size:36px;color:var(--teal);display:block;margin-bottom:8px;}
+.stat-lbl{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+
+/* Footer */
+footer{background:#ffffff;border-top:1px solid var(--border);padding:40px 28px 20px;}
+.footer-content{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.footer-copyright{font-size:10px;color:var(--muted);}
+.footer-badges{display:flex;gap:12px;}
+.badge{font-size:9px;padding:4px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.5px;font-weight:600;}
+.badge-hipaa{background:var(--green2);color:var(--green);}
+.badge-fhir{background:var(--teal2);color:var(--teal);}
+.badge-irb{background:var(--amber2);color:var(--amber);}
+
+/* Responsive */
+@media(max-width:768px){
+  .mkt-grid{grid-template-columns:repeat(2,1fr);}
+  .phase-grid{grid-template-columns:1fr;}
+  .moat-grid{grid-template-columns:1fr;}
+  .stats-row{flex-direction:column;gap:24px;}
+  .vc-hero h2{font-size:24px;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<header>
+  <div class="header-content">
+    <div class="logo">
+      <div>
+        <div class="logo-mark"><span>PIN</span> · LPTM</div>
+        <div class="logo-sub">Clinical Intelligence Platform</div>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="landing.html" class="back-link">Back to Home</a>
+      <a href="landing.html#portals" class="nav-link">Login</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Content -->
+<div class="content">
+
+  <!-- Hero -->
+  <div class="vc-hero">
+    <div class="vc-tag">Series A · Global Investor Briefing</div>
+    <h2>The <em>global intelligence OS</em> for pain medicine –<br>connecting 25+ countries through one unified platform</h2>
+    <p>PIN is not a registry. It is a data-powered, physician-governed operating system for the world's most underserved chronic disease · enhanced with a pharmacovigilance layer that makes it the only real-world platform where clinical outcomes and drug safety data live in the same longitudinal dataset. Regulators, payers, and pharma sponsors have been waiting for this for decades.</p>
+  </div>
+
+  <!-- Market Opportunity -->
+  <div class="stitle">Market Opportunity</div>
+  <div class="mkt-grid">
+    <div class="mkt-card"><div class="mkt-n">$80B+</div><div class="mkt-l">Global Pain Market</div><div class="mkt-s">7.2% CAGR</div></div>
+    <div class="mkt-card"><div class="mkt-n">$20B+</div><div class="mkt-l">RWE / RWD Market TAM</div><div class="mkt-s">PIN's primary market</div></div>
+    <div class="mkt-card"><div class="mkt-n">$4.8B</div><div class="mkt-l">Pharmacovigilance Market</div><div class="mkt-s">12.4% CAGR · PIN's new lane</div></div>
+    <div class="mkt-card"><div class="mkt-n">$600M</div><div class="mkt-l">Addressable Year 5</div><div class="mkt-s">Data + AI + PV + SaaS</div></div>
+  </div>
+
+  <!-- Clinical Network Advantage -->
+  <div class="stitle">Clinical Network Advantage · Global Reach</div>
+  <div class="moat-grid" style="grid-template-columns:repeat(2,1fr);">
+    <div class="moat" style="border-color:rgba(56,178,255,.3);">
+      <div class="moat-n" style="color:var(--teal);font-size:28px;">130+ Leading Pain Centers</div>
+      <div class="moat-t">Access to the PainLeaders Global Network</div>
+      <div class="moat-d">Partnerships with premier academic medical centers, community hospitals, and specialty clinics across the United States and internationally. This network provides immediate access to diverse patient populations and real-world clinical data across multiple healthcare systems.</div>
+    </div>
+    <div class="moat" style="border-color:rgba(56,178,255,.3);">
+      <div class="moat-n" style="color:var(--teal);font-size:28px;">7,500+ Physicians</div>
+      <div class="moat-t">Multi-Specialty Global Provider Network</div>
+      <div class="moat-d">Anesthesiologists, neurologists, physiatrists, and pain specialists across multiple countries generating longitudinal data across the care continuum—from acute post-surgical to chronic pain management in diverse clinical settings.</div>
+    </div>
+    <div class="moat" style="border-color:rgba(56,178,255,.3);">
+      <div class="moat-n" style="color:var(--teal);font-size:28px;">25+ Countries</div>
+      <div class="moat-t">Global Pain Organization Collaborations</div>
+      <div class="moat-d">Strategic partnerships with over 25 pain organizations worldwide, enabling multi-regional clinical trials, cross-border data harmonization (CDISC/OMOP), and international regulatory submissions (FDA, EMA, Health Canada).</div>
+    </div>
+    <div class="moat" style="border-color:rgba(56,178,255,.3);">
+      <div class="moat-n" style="color:var(--teal);font-size:28px;">50M+ Lives</div>
+      <div class="moat-t">Global Covered Lives Network</div>
+      <div class="moat-d">International insurance and payer partnerships providing access to longitudinal claims data across multiple healthcare systems, enabling comprehensive outcomes tracking and value-based care analytics on a global scale.</div>
+    </div>
+  </div>
+
+  <!-- Revenue Model -->
+  <div class="stitle">Revenue Model · 7 Streams</div>
+  <div class="panel">
+    <div class="p-body" style="padding:0">
+      <table class="rev-table">
+        <thead><tr><th>Revenue Stream</th><th>Model</th><th>Yr 1</th><th>Yr 2</th><th>Yr 3</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><div class="rev-nm">Industry Sponsorships</div><div class="rev-d">Pharma/medtech KOL + data access</div></td><td style="font-size:10px;color:var(--muted)">Annual contract</td><td style="color:var(--green);font-weight:700">$150K</td><td style="color:var(--teal);font-weight:700">$500K</td><td style="color:var(--violet);font-weight:700">$1.2M</td><td><span class="pp-low">Live</span></td></tr>
+          <tr><td><div class="rev-nm">PASS / PMS Study Fees</div><div class="rev-d">Post-authorization safety studies</div></td><td style="font-size:10px;color:var(--muted)">$50K–$150K/study</td><td style="color:var(--green);font-weight:700">$85K</td><td style="color:var(--teal);font-weight:700">$400K</td><td style="color:var(--violet);font-weight:700">$1.6M</td><td><span class="pp-act">Growing</span></td></tr>
+          <tr><td><div class="rev-nm">PV Signal Detection SaaS</div><div class="rev-d">Pharma PV teams · annual signal license</div></td><td style="font-size:10px;color:var(--muted)">$80K–$200K/yr</td><td style="color:var(--muted);font-weight:700">–</td><td style="color:var(--teal);font-weight:700">$240K</td><td style="color:var(--violet);font-weight:700">$1.4M</td><td><span class="pp-act">Phase 2</span></td></tr>
+          <tr><td><div class="rev-nm">Opioid Risk AI Licensing</div><div class="rev-d">API to payers / hospital systems</div></td><td style="font-size:10px;color:var(--muted)">SaaS + API</td><td style="color:var(--muted);font-weight:700">–</td><td style="color:var(--teal);font-weight:700">$200K</td><td style="color:var(--violet);font-weight:700">$1.8M</td><td><span class="pp-act">Phase 2</span></td></tr>
+          <tr><td><div class="rev-nm">Institutional VBP Subscriptions</div><div class="rev-d">Hospital LPTM + benchmarking</div></td><td style="font-size:10px;color:var(--muted)">$10K–$50K/site/yr</td><td style="color:var(--green);font-weight:700">$60K</td><td style="color:var(--teal);font-weight:700">$400K</td><td style="color:var(--violet);font-weight:700">$2.1M</td><td><span class="pp-mod">Pilot</span></td></tr>
+          <tr><td><div class="rev-nm">Research Registry Access</div><div class="rev-d">De-identified data for academia/industry</div></td><td style="font-size:10px;color:var(--muted)">Per-study fee</td><td style="color:var(--green);font-weight:700">$80K</td><td style="color:var(--teal);font-weight:700">$350K</td><td style="color:var(--violet);font-weight:700">$1.5M</td><td><span class="pp-low">Live</span></td></tr>
+          <tr><td><div class="rev-nm">Premium Memberships + CME</div><div class="rev-d">$200–$300/yr individual</div></td><td style="font-size:10px;color:var(--muted)">Individual SaaS</td><td style="color:var(--green);font-weight:700">$80K</td><td style="color:var(--teal);font-weight:700">$220K</td><td style="color:var(--violet);font-weight:700">$600K</td><td><span class="pp-low">Live</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Funding Roadmap -->
+  <div class="stitle">Funding Roadmap</div>
+  <div class="phase-grid">
+    <div class="phase-card"><span class="phase-tag cv">Now → Month 6</span><div class="phase-title">MVP / Seed · US Launch</div><ul class="phase-list"><li>5 pilot sites · 500 patients</li><li>5 AI modules live</li><li>PV signal detection pilot with 1 pharma partner</li><li>First PASS study contract signed ($85K)</li><li>STAR/HEDIS reporting live for 2 payer plans</li></ul><div class="phase-fund">$750K Seed</div></div>
+    <div class="phase-card"><span class="phase-tag" style="color:var(--amber)">Month 6 → 18</span><div class="phase-title">Scale / Series A · Global Expansion</div><ul class="phase-list"><li>20+ sites · 3,000 patients · 12 countries</li><li>3 active PASS studies · 2 pharma PV clients</li><li>PV SaaS launched · PSUR auto-generation</li><li>ARR: $370K → $1.6M</li><li>Partnerships with 15+ global pain organizations</li></ul><div class="phase-fund">$3M Series A</div></div>
+    <div class="phase-card"><span class="phase-tag" style="color:var(--violet)">Month 18 → 36</span><div class="phase-title">Expand / Series B · Global Platform</div><ul class="phase-list"><li>100+ sites · 15,000+ patients · 25+ countries</li><li>Full PV platform · 8+ pharma clients</li><li>Government / EMA / FDA / Health Canada contracts</li><li>Opioid Risk AI licensed to 10+ global payers</li><li>ARR → $10M+</li></ul><div class="phase-fund">$12M Series B</div></div>
+  </div>
+
+  <!-- Why Invest Now -->
+  <div class="stitle">Why Invest Now · Market Validation</div>
+  <div class="panel" style="background:linear-gradient(135deg,var(--green2),rgba(34,201,138,0.05));border-color:rgba(8,119,87,.3);">
+    <div class="p-body">
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;">
+        <div>
+          <h3 style="font-family:'Poppins',sans-serif;font-weight:600;font-size:18px;color:var(--green);margin-bottom:12px;">Pain Medicine is at an Inflection Point</h3>
+          <p style="font-size:12px;color:var(--txt2);line-height:1.8;margin-bottom:16px;">
+            The convergence of regulatory mandates (FDA Sentinel, EMA PASS), value-based care contracts, and AI-readiness has created a <strong style="color:var(--teal);">$600M addressable market</strong> for intelligence platforms that can bridge clinical practice, research, and pharmacovigilance.
+          </p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            <li style="font-size:11px;color:var(--muted);display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--green);font-weight:700;">→</span> FDA Sentinel Initiative mandates real-world evidence for drug safety</li>
+            <li style="font-size:11px;color:var(--muted);display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--green);font-weight:700;">→</span> EMA PASS studies now required for all new pain therapeutics</li>
+            <li style="font-size:11px;color:var(--muted);display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--green);font-weight:700;">→</span> Value-based contracts require STAR/HEDIS quality reporting</li>
+            <li style="font-size:11px;color:var(--muted);display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--green);font-weight:700;">→</span> Multi-site trials demand unified data standards (CDISC/OMOP)</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-family:'Poppins',sans-serif;font-weight:600;font-size:18px;color:var(--amber);margin-bottom:12px;">First-Mover Advantage</h3>
+          <p style="font-size:12px;color:var(--txt2);line-height:1.8;margin-bottom:16px;">
+            PIN is the <strong style="color:var(--teal);">only platform</strong> designed specifically for pain medicine with built-in pharmacovigilance, multi-site research capabilities, and payer analytics in a single integrated OS.
+          </p>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
+            <div style="background:var(--white);padding:16px;border-radius:8px;border:1px solid var(--border);">
+              <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:24px;color:var(--teal);">25+</div>
+              <div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Countries</div>
+            </div>
+            <div style="background:var(--white);padding:16px;border-radius:8px;border:1px solid var(--border);">
+              <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:24px;color:var(--teal);">7</div>
+              <div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Revenue Streams</div>
+            </div>
+            <div style="background:var(--white);padding:16px;border-radius:8px;border:1px solid var(--border);">
+              <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:24px;color:var(--teal);">25+</div>
+              <div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Pain Organizations</div>
+            </div>
+            <div style="background:var(--white);padding:16px;border-radius:8px;border:1px solid var(--border);">
+              <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:24px;color:var(--teal);">0</div>
+              <div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Global Competitors</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Investor CTA Section -->
+  <div style="background:linear-gradient(135deg,var(--teal2),var(--pharma3));border:1px solid rgba(0,113,206,.2);border-radius:12px;padding:40px;text-align:center;margin-bottom:32px;">
+    <div style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:16px;">Series A Investment Opportunity</div>
+    <h2 style="font-family:'Poppins',sans-serif;font-weight:600;font-size:28px;line-height:1.3;margin-bottom:16px;">Join the <em style="color:var(--teal);">Global Intelligence Revolution</em> in Pain Medicine</h2>
+    <p style="font-size:13px;color:var(--txt2);max-width:600px;margin:0 auto 24px;line-height:1.8;">
+      PIN is positioned to become the <strong>standard global data infrastructure</strong> for pain medicine—connecting 25+ countries, 130+ clinical sites, and pharmaceutical safety surveillance in a single, unified platform. The window for early participation is closing.
+    </p>
+    <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+      <a href="mailto:investors@paininnovation.network" style="background:linear-gradient(135deg,var(--teal),var(--pharma));color:#fff;text-decoration:none;padding:12px 28px;border-radius:8px;font-size:12px;font-weight:600;letter-spacing:0.5px;transition:opacity 0.15s;">Request Investor Deck</a>
+      <a href="#" style="background:transparent;color:var(--teal);text-decoration:none;padding:12px 28px;border-radius:8px;font-size:12px;font-weight:600;letter-spacing:0.5px;border:1px solid var(--teal);transition:all 0.15s;" onclick="alert('Contact: investors@paininnovation.network');return false;">Schedule Due Diligence Call</a>
+    </div>
+    <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:center;gap:40px;flex-wrap:wrap;">
+      <div style="text-align:center;">
+        <div style="font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Funding Round</div>
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:20px;color:var(--amber);margin-top:4px;">$750K Seed</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Pre-Money Valuation</div>
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:20px;color:var(--amber);margin-top:4px;">$4.5M</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;">Use of Funds</div>
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:20px;color:var(--amber);margin-top:4px;">MVP + Pilots</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div style="text-align:center;padding:20px 0;">
+    <p style="font-size:11px;color:var(--muted);">For investor inquiries, contact:</p>
+    <a href="mailto:investors@paininnovation.network" style="font-size:13px;color:var(--teal);text-decoration:none;font-weight:600;">investors@paininnovation.network</a>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-copyright">© 2024 Pain Innovation Network. All rights reserved.</div>
+    <div class="footer-badges">
+      <span class="badge badge-hipaa">HIPAA Compliant</span>
+      <span class="badge badge-fhir">FHIR R4</span>
+      <span class="badge badge-irb">IRB Approved</span>
+    </div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
